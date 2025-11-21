@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowRight, Search, TrendingUp, FileText, Settings, BarChart3, Link } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface BlogPost {
   id: number;
@@ -134,6 +135,8 @@ const blogPosts: BlogPost[] = [
 
 export const Blog = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const posts = (t("blogList.items", { returnObjects: true }) as BlogPost[]) || blogPosts;
 
   return (
     <motion.section
@@ -154,20 +157,20 @@ export const Blog = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-br from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] text-white text-xs sm:text-sm font-semibold rounded-full mb-3 sm:mb-4">
-            Performance Insights
+            {t("blogList.badge")}
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 text-[hsl(222,47%,11%)] dark:text-foreground">
-            Blog & <span className="bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] bg-clip-text text-transparent">Ad Playbooks</span>
+            {t("blogList.headingPrefix")} <span className="bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] bg-clip-text text-transparent">{t("blogList.headingEmphasis")}</span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl leading-relaxed">
-            Multi‑platform ad strategies, creative frameworks, tracking setups, and reporting that drive ROAS across Google, Meta, TikTok, Snapchat, LinkedIn, and X.
+            {t("blogList.subtitle")}
           </p>
         </motion.div>
 
         {/* Blog Grid */}
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
-            {blogPosts.map((post, index) => (
+            {posts.map((post, index) => (
               <motion.article
                 key={post.id}
                 initial={{ opacity: 0, y: 50 }}
@@ -237,16 +240,16 @@ export const Blog = () => {
                   </p>
 
                   <div className="flex items-center justify-between mt-auto pt-3 border-t border-[hsl(240,40%,92%)] dark:border-[hsl(240,30%,35%)]/50">
-                    <span className="text-[10px] sm:text-xs text-[hsl(var(--brand-blue))] dark:text-[hsl(var(--brand-blue))] truncate">By {post.author}</span>
+                    <span className="text-[10px] sm:text-xs text-[hsl(var(--brand-blue))] dark:text-[hsl(var(--brand-blue))] truncate">{t("blogList.by")} {post.author}</span>
                     <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
                       <button className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-card dark:bg-white/10 text-[hsl(var(--gold))] dark:text-white border border-[hsl(var(--gold))]/30 dark:border-white/20 hover:bg-gradient-to-r hover:from-[hsl(var(--gold))] hover:to-[hsl(var(--brand-blue))] hover:text-white hover:border-transparent transition-all duration-300 shadow-sm">
-                        <span className="hidden sm:inline">Read</span>
+                        <span className="hidden sm:inline">{t("blogList.read")}</span>
                         <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                       </button>
                     </div>
                   </div>
                 </div>
-              </motion.article>
+            </motion.article>
             ))}
           </div>
         </div>

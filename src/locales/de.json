@@ -1,0 +1,439 @@
+{
+  "navbar": {
+    "services": "Dienstleistungen",
+    "howItWorks": "Ablauf",
+    "pricing": "Preise",
+    "testimonials": "Referenzen",
+    "faq": "Häufig gestellte Fragen",
+    "bookCall": "Strategiegespräch buchen"
+  },
+  "blogList": {
+    "badge": "Performance‑Insights",
+    "headingPrefix": "Blog &",
+    "headingEmphasis": "Ad‑Playbooks",
+    "subtitle": "Plattformübergreifende Anzeigenstrategien, Kreativ‑Frameworks, Tracking‑Setups und Reporting für mehr ROAS auf Google, Meta, TikTok, Snapchat, LinkedIn und X.",
+    "by": "Von",
+    "read": "Lesen",
+    "items": [
+      {
+        "id": 1,
+        "title": "PMAX + Search: Google Ads für Skalierung strukturieren",
+        "excerpt": "Wann Search vs PMAX trennen, Asset‑Group‑Strategie und wie man Signale für profitables Wachstum liest.",
+        "content": "",
+        "author": "Growth Team",
+        "date": "15. Oktober 2025",
+        "readTime": "7 Min.",
+        "category": "Google Ads",
+        "image": "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        "id": 2,
+        "title": "Meta Creative Testing: Vom Hook zum Hold",
+        "excerpt": "Framework zum Testen von Angles, Hooks, Formaten und Iterationen, um CPA zu senken und ROAS zu steigern.",
+        "content": "",
+        "author": "Paid Social",
+        "date": "8. Oktober 2025",
+        "readTime": "6 Min.",
+        "category": "Meta Ads",
+        "image": "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        "id": 3,
+        "title": "TikTok Ads: Creatives, die konvertieren (ohne wie Ads auszusehen)",
+        "excerpt": "Native Anmutung, Trend‑Alignment und die ersten 3 Sekunden, die Performance machen oder brechen.",
+        "content": "",
+        "author": "Creative Lab",
+        "date": "28. September 2025",
+        "readTime": "5 Min.",
+        "category": "TikTok",
+        "image": "https://images.unsplash.com/photo-1529336953121-ad5a0d43d0d2?w=800&auto=format&fit=crop&q=80"
+      }
+    ]
+  },
+  "integrations": {
+    "badge": "Plattform‑Integrationen",
+    "headingPrefix": "Nahtlose",
+    "headingEmphasis": "Ad‑ & Analytics‑Integrationen",
+    "subtitle": "Wir verbinden Plattformen End‑to‑End – Ads, Pixel, GA4/GTM und Dashboards – damit Budgets in messbaren Umsatz fließen.",
+    "items": [
+      { "name": "Google Ads", "category": "Anzeigen" },
+      { "name": "Meta Ads", "category": "Anzeigen" },
+      { "name": "TikTok Ads", "category": "Anzeigen" },
+      { "name": "Snapchat Ads", "category": "Anzeigen" },
+      { "name": "LinkedIn Ads", "category": "Anzeigen" },
+      { "name": "X Ads (Twitter)", "category": "Anzeigen" },
+      { "name": "GA4", "category": "Analytik" },
+      { "name": "Google Tag Manager", "category": "Analytik" },
+      { "name": "Looker Studio", "category": "Analytik" },
+      { "name": "Supermetrics", "category": "Analytik" },
+      { "name": "Segment", "category": "CDP" },
+      { "name": "Mixpanel", "category": "Produkt" },
+      { "name": "Hotjar", "category": "UX" },
+      { "name": "Meta Pixel", "category": "Tracking" },
+      { "name": "LinkedIn Insight Tag", "category": "Tracking" },
+      { "name": "TikTok Pixel", "category": "Tracking" },
+      { "name": "Server‑Side GTM", "category": "Tracking" },
+      { "name": "Shopify/GA", "category": "E‑Com" }
+    ],
+    "ctaTitlePrefix": "Nutzen Sie ein anderes System?",
+    "ctaTitleEmphasis": "Wir passen uns an.",
+    "ctaDesc": "Teilen Sie Ihr Format oder Ihre API – CSV, Sheets, CRM oder DB. Wir richten uns End‑to‑End nach Ihrem Workflow."
+  },
+  "hero": {
+    "badge": "Vertrauen von 300+ Growth‑Teams weltweit",
+    "headingPrefix": "Profitables",
+    "headingEmphasis": "Ad‑Management",
+    "subtitle": "Planen, launchen und skalieren Sie Anzeigen über Google, Meta, TikTok, Snapchat, LinkedIn und X. Full‑Funnel‑Strategie, Creatives, Tracking und wöchentliche Performance‑Optimierung.",
+    "ctaAria": "Kostenloses 30‑minütiges Strategiegespräch buchen",
+    "ctaPrimaryDesktop": "Strategiegespräch buchen (30 Min)",
+    "ctaPrimaryMobile": "Gespräch buchen",
+    "urgency": "Kostenloses Design‑Mockup + Strategiesession inklusive",
+    "topRated": "Top bewertet",
+    "imgAlt": "Kreativer Grafik‑Workspace mit lebendigen Projekten",
+    "statProjects": "Umgesetzte Projekte",
+    "statTurnaround": "Ø Durchlaufzeit (Tage)",
+    "statSatisfaction": "Kundenzufriedenheit"
+  },
+  "notFound": {
+    "code": "404",
+    "subtitle": "Ups! Seite nicht gefunden",
+    "home": "Zur Startseite"
+  },
+  "how": {
+    "badge": "Unser Prozess (4 Schritte)",
+    "headingPrefix": "So",
+    "headingEmphasis": "arbeiten wir",
+    "subtitle": "Von Audit bis Optimierung in 7–14 Tagen. Datengetriebener Prozess, messbare Ergebnisse und kontinuierliche Verbesserung.",
+    "cta": "Strategiegespräch buchen",
+    "steps": [
+      {
+        "step": "Schritt 1",
+        "title": "Audit & Strategie",
+        "description": "Bestehende Kampagnen analysieren, Chancen identifizieren und KPIs definieren. Kanalstrategie, Budget und Tracking-Anforderungen planen."
+      },
+      {
+        "step": "Schritt 2",
+        "title": "Setup & Implementierung",
+        "description": "Kampagnenstrukturen aufbauen, Pixel und GA4-Events implementieren, GTM konfigurieren. Frameworks für Kreativtests und Dashboards einrichten."
+      },
+      {
+        "step": "Schritt 3",
+        "title": "Launch & Test",
+        "description": "Kampagnen ausrollen, Kreativ-Varianten starten und Performance überwachen. Schnelles Testing zur Identifikation von Gewinnern."
+      },
+      {
+        "step": "Schritt 4",
+        "title": "Optimieren & Skalieren",
+        "description": "Wöchentliche Optimierung auf Basis der Daten, Gewinner skalieren, Budgets anpassen. Kontinuierliche Kreativtests und Reporting."
+      }
+    ]
+  },
+  "services": {
+    "badge": "Anzeigen-Services",
+    "headingPrefix": "Full-Funnel",
+    "headingEmphasis": "Ad Management",
+    "intro": "Google, Meta, TikTok, Snapchat, LinkedIn und X — geplant, gelauncht und optimiert mit Kreativtests, solidem Tracking und klaren Reports.",
+    "items": [
+      {
+        "title": "Ad-Strategie & Planung",
+        "description": "Full‑Funnel-Strategie, Zielgruppen-Research, Budgets und Kanal-Mix, um Ihre CAC- und ROAS-Ziele zu erreichen",
+        "benefit": "Klarer Wachstumsplan"
+      },
+      {
+        "title": "Google Ads (Search/PMAX/YouTube)",
+        "description": "Such-, Performance-Max- und YouTube-Kampagnen aufbauen und optimieren mit robustem Keyword- und Kreativtesting",
+        "benefit": "Intent einfangen"
+      },
+      {
+        "title": "Meta- & TikTok-Ads",
+        "description": "Leistungsstarke Creatives und Setups für Facebook, Instagram und TikTok mit laufenden A/B-Tests",
+        "benefit": "Creatives skalieren"
+      },
+      {
+        "title": "LinkedIn- & X-(Twitter)-Ads",
+        "description": "B2B-Targeting auf LinkedIn plus trendbewusste X-Kampagnen für Awareness, Traffic und Nachfrage",
+        "benefit": "Entscheider erreichen"
+      },
+      {
+        "title": "Snapchat & neue Plattformen",
+        "description": "Reichweite über Snapchat und weitere Paid-Social-Plattformen ausbauen, End-to-End getrackt",
+        "benefit": "Reichweite erschließen"
+      },
+      {
+        "title": "Tracking, Analytics & CRO",
+        "description": "GTM/GA4, Pixel, serverseitiges Tracking, Dashboards und Landingpage-Optimierung für echte Performance",
+        "benefit": "Messen & verbessern"
+      }
+    ]
+  },
+  "value": {
+    "heading": "Warum 200+ Marken unser SMM-Team wählen",
+    "items": [
+      { "title": "70% Kostenreduktion", "description": "In den meisten Fällen garantiert" },
+      { "title": "Native deutsche Qualitätskontrolle", "description": "Direkte Aufsicht durch Muttersprachler" },
+      { "title": "24h Austausch-Garantie", "description": "Nahtlose Kontinuität sichergestellt" },
+      { "title": "Volle Vertraulichkeit & NDAs", "description": "Ihre Daten bleiben sicher" }
+    ]
+  },
+  "pricing": {
+    "badge": "Transparente Preise",
+    "headingPrefix": "Ad-Kampagnen",
+    "headingEmphasis": "Pakete",
+    "intro": "Wählen Sie einen Plan, der zu Ihren Kanälen und Zielen passt. Budgets werden nur skaliert, wenn die Unit Economics stimmen. Keine versteckten Gebühren.",
+    "trialTitle": "Eine Woche kostenlos testen",
+    "freeBanner": "Neukunden erhalten 7 Tage kostenlos für jeden Plan. Keine Kreditkarte erforderlich.",
+    "startTrial": "Kostenlos testen",
+    "tagLabel": "Ad-Kampagnen",
+    "perMonth": "/Monat",
+    "noSetupFee": "Keine Einrichtungsgebühr",
+    "setupFeeWithAmount": "+ {{amount}} Einrichtungsgebühr",
+    "startAudit": "Kostenfreien Audit starten",
+    "disclaimer": "Alle Pläne werden monatlich abgerechnet, ohne langfristige Bindung. Upgrade/Downgrade jederzeit. Typische Bearbeitungszeit 24–72h je nach Volumen.",
+    "plans": [
+      {
+        "name": "Launch",
+        "hours": "Ein Kanal (Google oder Meta)",
+        "price": 1499,
+        "setupFee": 0,
+        "features": [
+          "Account-Audit & Strategie (1x)",
+          "Kampagnen-Setup (Search/PMAX oder Meta)",
+          "Pixel-/GA4-Event-Mapping",
+          "2 Creatives oder Varianten inklusive",
+          "Wöchentliche Optimierung & Report"
+        ],
+        "highlighted": false
+      },
+      {
+        "name": "Scale",
+        "hours": "Multi-Channel (2–3 Plattformen)",
+        "price": 3499,
+        "setupFee": 0,
+        "badge": "Am beliebtesten",
+        "features": [
+          "Alles aus Launch",
+          "PMAX + Paid Social Struktur",
+          "Framework für Kreativtests",
+          "Serverseitiges GTM (optional)",
+          "Wöchentlicher Call + Looker-Dashboard",
+          "Priorisierter Support"
+        ],
+        "highlighted": true
+      },
+      {
+        "name": "Enterprise",
+        "hours": "Full‑Funnel (4+ Plattformen)",
+        "price": 4999,
+        "setupFee": 0,
+        "badge": "Bestes Preis‑Leistungs‑Verhältnis",
+        "features": [
+          "Alles aus Scale",
+          "ABM + LinkedIn + X (B2B)",
+          "Lift-Studien & Holdout-Tests",
+          "Landingpage‑CRO‑Support",
+          "Dedizierter Stratege",
+          "Individuelle SLAs & Integrationen"
+        ],
+        "highlighted": false
+      }
+    ]
+  },
+  "why": {
+    "badge": "Der DON VA Unterschied",
+    "heading": "Warum DON VA?",
+    "subtitle": "Nicht alle Virtual‑Assistant‑Services sind gleich. Das unterscheidet uns vom Rest.",
+    "items": [
+      {
+        "title": "Exklusiver Talentpool",
+        "description": "Nur 3% der Bewerber bestehen unseren strengen Auswahlprozess. Jede VA wird auf Skills, Kommunikation und Cultural Fit getestet."
+      },
+      {
+        "title": "Native deutsche Aufsicht",
+        "description": "Jede Lieferung wird von deutschsprachigen Managern geprüft, die Markt, Kultur und Qualitätsstandards verstehen. Keine Sprach- oder Kulturbarrieren."
+      },
+      {
+        "title": "Blitzschnelle Skalierung",
+        "description": "Von 1 auf 10 VAs in Tagen statt Monaten. Durch unseren vorgeprüften Pool warten Sie nie auf die richtige Person."
+      },
+      {
+        "title": "Null‑Risiko‑Garantie",
+        "description": "14‑Tage Geld‑zurück‑Garantie in allen Starter‑Plänen. Falls eine VA nicht passt, ersetzen wir innerhalb von 24h – ohne Fragen, ohne Extra‑Kosten."
+      },
+      {
+        "title": "Echte Partnerschaft",
+        "description": "Wir verschwinden nicht nach dem Staffing. Dediziertes Account‑Management, regelmäßige Check‑ins und laufende Optimierung für maximalen ROI."
+      },
+      {
+        "title": "Bewährte Ergebnisse",
+        "description": "Über 200 Unternehmen haben mit DON VA skaliert. Ø Kundenzufriedenheit: 4,9/5. Ø Kosteneinsparung: 68%. Keine Versprechen – belegte Resultate."
+      }
+    ]
+  },
+  "faq": {
+    "badge": "Ad-Kampagnen FAQs",
+    "heading": "Häufig gestellte Fragen",
+    "description": "Alles, was Sie über unser Ad-Management wissen müssen – Plattformen, Tracking, Creatives, Reporting und Timelines.",
+    "contactSupport": "Support kontaktieren",
+    "viewPricing": "Preise ansehen",
+    "ctaTitle": "Noch Fragen?",
+    "ctaSubtitle": "Unser Team hilft gerne. Wir melden uns innerhalb von 2 Stunden.",
+    "items": [
+      {
+        "q": "Welche Werbeplattformen betreut ihr?",
+        "a": "Google (Search/PMAX/YouTube), Meta (Facebook/Instagram), TikTok, Snapchat, LinkedIn und X (Twitter). Wir richten außerdem Pixel, GA4 und GTM ein."
+      },
+      {
+        "q": "Wie strukturiert ihr Kampagnen?",
+        "a": "Plattform-spezifische Setups: PMAX-Asset-Gruppen nach Themen, Search nach Intent und Paid Social nach Kreativ-Angles. Wöchentliche Optimierung mit klaren Leitplanken."
+      },
+      {
+        "q": "Wie funktioniert Tracking und Attribution?",
+        "a": "Wir implementieren GA4-Events, Plattform-Pixel und optional serverseitiges GTM. Wir gleichen Plattform vs. GA4 ab und liefern Looker-Dashboards für ROAS/CAC."
+      },
+      {
+        "q": "Wie schnell könnt ihr starten?",
+        "a": "Typische Timeline: Audit (3–5 Tage), Tracking-Fixes (2–5 Tage), erster Launch (7–10 Tage). Wöchentliche Iteration auf Live-Daten."
+      },
+      {
+        "q": "Erstellt ihr auch Creatives?",
+        "a": "Ja. Wir produzieren UGC und ausgearbeitete Varianten je Plattform und testen Hooks, Angles und Formate, um CPA zu senken und ROAS zu steigern."
+      },
+      {
+        "q": "Wie reportet ihr Performance?",
+        "a": "Wöchentliche Zusammenfassungen mit Spend, CPA, ROAS, Top-Creatives, Learnings und nächsten Schritten. Monatliche Deep Dives mit Attribution und Budgetempfehlungen."
+      },
+      {
+        "q": "Mit welchen Budgets arbeitet ihr?",
+        "a": "Von ersten Tests bis 500k+ $/Monat. Wir skalieren nur, wenn die Unit Economics passen – mit Caps und Kill-Rules zur Effizienzsicherung."
+      }
+    ]
+  }
+  ,
+  "blog": {
+    "notFound": "Blogbeitrag nicht gefunden",
+    "backHome": "Zur Startseite",
+    "backToHome": "Zur Startseite",
+    "ctaTitle": "Bereit, Ihr Unternehmen zu transformieren?",
+    "ctaSubtitle": "Buchen Sie eine kostenlose Beratung und erfahren Sie, wie virtuelle Assistenten beim Skalieren helfen.",
+    "ctaPrimary": "Kostenlose Beratung buchen →",
+    "ctaPrimaryMobile": "Jetzt starten →",
+    "moreArticles": "Weitere Artikel"
+  },
+  "caseStudy": {
+    "notFound": "Fallstudie nicht gefunden",
+    "backHome": "Zur Startseite",
+    "annualSavings": "Jährliche Einsparungen",
+    "teamSize": "Teamgröße",
+    "implementation": "Umsetzung",
+    "challenge": "Die Herausforderung",
+    "solution": "Die Lösung",
+    "results": "Die Ergebnisse",
+    "successBadge": "Erfolg voraus",
+    "readyTitlePrefix": "Bereit für",
+    "readyTitleEmphasis": "ähnliche Ergebnisse?",
+    "ctaBook": "Kostenlose Beratung buchen",
+    "ctaViewAll": "Alle Fallstudien ansehen",
+    "benefitNoCommitment": "Ohne Verpflichtung",
+    "benefit15Min": "15 Minuten",
+    "benefitFree": "100% kostenlos",
+    "moreSuccess": "Weitere Erfolgsgeschichten",
+    "viewFullCase": "Komplette Fallstudie ansehen",
+    "viewCaseStudy": "Fallstudie ansehen"
+  },
+  "testimonials": {
+    "headingPrefix": "Echte Ergebnisse von",
+    "headingEmphasis": "Growth-Teams",
+    "subtitle": "Echte Resultate – niedrigere CPA, höherer ROAS und schnellere Lernzyklen über Google, Meta, TikTok, Snapchat, LinkedIn und X.",
+    "successStory": "Erfolgsgeschichte",
+    "caseStudyPrefix": "Fallstudie:",
+    "caseStudyTitle": "3,4x ROAS über mehrere Kanäle",
+    "caseStudyDesc": "Wie wir PMAX + Meta-Kreativtests kombinierten, um Budgets zu skalieren und gleichzeitig den CPA zu verbessern – validiert in GA4.",
+    "viewFull": "Komplette Fallstudie ansehen",
+    "items": [
+      {
+        "name": "Emma Rodriguez",
+        "company": "Luxe Beauty Co.",
+        "role": "Gründerin",
+        "content": "Wir skalierten Meta + Google, ohne den ROAS zu opfern. Wöchentliche Kreativtests und Budget‑Leitplanken machten das Wachstum planbar.",
+        "rating": 5
+      },
+      {
+        "name": "David Chen",
+        "company": "Peak Performance",
+        "role": "CEO",
+        "content": "LinkedIn + Search lieferten endlich qualifizierte SQLs bei niedrigerem gemischten CAC. Das Reporting war klar und umsetzbar.",
+        "rating": 5
+      },
+      {
+        "name": "Sophie Martens",
+        "company": "Urban Eats",
+        "role": "Marketing-Leitung",
+        "content": "TikTok + Snapchat brachten echte zusätzliche Bestellungen. Wöchentliche kreative Iterationen hielten den CPA im Sinkflug.",
+        "rating": 5
+      }
+    ]
+  }
+  ,
+  "caseStudiesList": {
+    "badge": "Erfolgsgeschichten",
+    "heading": "Erfolgsgeschichten aus Ad‑Kampagnen",
+    "subtitle": "So haben wir profitabel über Google, Meta, TikTok, Snapchat, LinkedIn und X skaliert – mit Kreativtests, solidem Tracking und wöchentlicher Optimierung.",
+    "statResult": "Ergebnis",
+    "statFocus": "Fokus",
+    "statTimeframe": "Zeitrahmen",
+    "readShort": "Studie ansehen",
+    "ctaPrompt": "Bereit für Ihre eigene Erfolgsgeschichte?",
+    "ctaPrimaryDesktop": "Kostenlose Erstberatung buchen →",
+    "ctaPrimaryMobile": "Jetzt starten →",
+    "items": [
+      {
+        "id": 1,
+        "title": "DTC Skalierung mit PMAX + UGC auf Meta",
+        "company": "Luxe Beauty Co.",
+        "industry": "DTC Beauty",
+        "challenge": "Steigende CPAs auf Meta und stagnierende Google‑Search. Benötigt: frische Creatives und mehr Reichweite ohne ROAS zu zerstören.",
+        "solution": "UGC‑Kreativtests auf Meta (Hooks/Angles) + PMAX‑Asset‑Groups nach Themen. Wöchentliche Optimierung mit Budget‑Leitplanken und GA4‑Validierung.",
+        "results": [
+          { "metric": "ROAS", "value": "3,4x", "description": "Über Meta/Google gemittelt" }
+        ],
+        "testimonial": "Der wöchentliche Rhythmus und die Kreativtests ermöglichten Skalierung ohne ROAS‑Verlust.",
+        "testimonialAuthor": "Emma Rodriguez",
+        "testimonialRole": "Gründerin, Luxe Beauty Co.",
+        "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop",
+        "stats": { "mainResult": "3,4x ROAS", "timeframe": "8 Wochen", "seoFocus": "Meta + PMAX" }
+      },
+      {
+        "id": 2,
+        "title": "B2B Pipeline: LinkedIn + Search Capture",
+        "company": "Peak Performance",
+        "industry": "B2B Services",
+        "challenge": "Teure Leads auf LinkedIn und schwache MQL‑Qualität aus Formularen. Ziel: Pipeline‑Wachstum bei niedrigerem blended CAC.",
+        "solution": "ABM‑Audiences auf LinkedIn mit Thought‑Leadership + High‑Intent‑Google‑Search. CRO‑Tweaks und Attributions‑Cleanup in GA4/GTM.",
+        "results": [
+          { "metric": "CAC", "value": "-32%", "description": "Über Kanäle gemittelt" }
+        ],
+        "testimonial": "Endlich qualifizierte Leads. Die ABM + Search‑Kombi hat unsere Pipeline über Nacht verändert.",
+        "testimonialAuthor": "David Chen",
+        "testimonialRole": "CEO, Peak Performance",
+        "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop",
+        "stats": { "mainResult": "-32% CAC", "timeframe": "6 Wochen", "seoFocus": "LinkedIn + Search" }
+      },
+      {
+        "id": 3,
+        "title": "Inkrementellen Lift mit TikTok + Snapchat erschließen",
+        "company": "CloudFlow",
+        "industry": "SaaS",
+        "challenge": "Search war ausgereizt; zusätzlicher Volumenbedarf. Unsicherheit bei der Lift‑Messung über neue Social‑Kanäle.",
+        "solution": "TikTok + Snapchat Creatives mit wöchentlichen Iterationen, Event‑Mapping und Lift‑Studien (Plattform/GA4). Budgetregeln und Holdout‑Tests.",
+        "results": [
+          { "metric": "Lift", "value": "+22%", "description": "Inkrementale Sign‑ups" }
+        ],
+        "testimonial": "Wir fanden echte zusätzliche Reichweite statt Search‑Kannibalisierung.",
+        "testimonialAuthor": "Marco Schneider",
+        "testimonialRole": "VP Marketing, CloudFlow",
+        "image": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop",
+        "stats": { "mainResult": "+22% Lift", "timeframe": "5 Wochen", "seoFocus": "TikTok + Snapchat" }
+      }
+    ]
+  }
+}

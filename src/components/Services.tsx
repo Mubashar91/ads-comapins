@@ -1,49 +1,15 @@
 import { Palette, Layout, Package, Smartphone, Video, Sparkles } from "lucide-react";
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useTranslation } from "react-i18next";
 
-const services = [
-  {
-    icon: Palette,
-    title: "Ad Strategy & Planning",
-    description: "Full‑funnel strategy, audience research, budgets, and channel mix to hit your CAC and ROAS targets",
-    benefit: "Clear growth plan"
-  },
-  {
-    icon: Layout,
-    title: "Google Ads (Search/PMAX/YouTube)",
-    description: "Build and optimize Search, Performance Max, and YouTube campaigns with robust keyword and creative testing",
-    benefit: "Capture intent"
-  },
-  {
-    icon: Package,
-    title: "Meta & TikTok Ads",
-    description: "High‑performing creatives and structures across Facebook, Instagram, and TikTok with ongoing A/B testing",
-    benefit: "Scale creatives"
-  },
-  {
-    icon: Smartphone,
-    title: "LinkedIn & X (Twitter) Ads",
-    description: "B2B targeting on LinkedIn plus trend‑aware X campaigns for awareness, traffic, and demand capture",
-    benefit: "Reach decision‑makers"
-  },
-  {
-    icon: Video,
-    title: "Snapchat & Emerging Platforms",
-    description: "Expand reach with Snapchat and other paid social where your buyers spend time, tracked end‑to‑end",
-    benefit: "Unlock reach"
-  },
-  {
-    icon: Sparkles,
-    title: "Tracking, Analytics & CRO",
-    description: "GTM/GA4, pixels, server‑side tracking, dashboards, and landing page optimization for real performance",
-    benefit: "Measure & improve"
-  }
-];
+const iconMap = [Palette, Layout, Package, Smartphone, Video, Sparkles];
 
 export const Services = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const { t } = useTranslation();
+  const items = (t("services.items", { returnObjects: true }) as Array<{ title: string; description: string; benefit: string }>);
 
   return (
     <motion.section 
@@ -72,21 +38,21 @@ export const Services = () => {
         >
           <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2.5 bg-gradient-to-br from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] text-white text-xs sm:text-sm md:text-base font-semibold rounded-full mb-3 sm:mb-4 shadow-[0_8px_24px_-6px_rgba(59,130,246,0.4)] border border-white/20 backdrop-blur-sm relative overflow-hidden">
             <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-50"></span>
-            <span className="relative z-10">Ad Campaign Services</span>
+            <span className="relative z-10">{t("services.badge")}</span>
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 text-[hsl(222,47%,20%)] dark:text-white leading-tight tracking-tight">
-            Full-Funnel <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] bg-clip-text text-transparent bg-[length:200%_100%]">Ad Management</span>
+            {t("services.headingPrefix")} <span className="relative inline-block">
+              <span className="bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] bg-clip-text text-transparent bg-[length:200%_100%]">{t("services.headingEmphasis")}</span>
               <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[hsl(var(--gold))]/40 to-transparent"></span>
             </span>
           </h2>
           <p className="text-base sm:text-lg md:text-lg lg:text-xl text-muted-foreground max-w-3xl leading-relaxed px-2">
-            Google, Meta, TikTok, Snapchat, LinkedIn, and X—planned, launched, and optimized with creative testing, robust tracking, and clear reporting.
+            {t("services.intro")}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-7 lg:gap-8 max-w-7xl mx-auto relative z-10">
-          {services.map((service, index) => (
+          {items.map((service, index) => (
             <motion.div 
               key={index}
               className="relative bg-card text-[hsl(222,47%,20%)] dark:text-white border-2 border-[hsl(215,32%,91%)] dark:border-[hsl(250,30%,35%)]/50 p-5 sm:p-6 md:p-7 lg:p-9 xl:p-10 rounded-xl sm:rounded-2xl hover:border-[hsl(var(--gold))] dark:hover:border-[hsl(var(--gold))] hover:shadow-[0_25px_80px_-20px_hsl(217_91%_60%/0.25)] dark:hover:shadow-[0_25px_80px_-20px_rgba(0,0,0,0.4)] transition-all duration-700 group overflow-hidden"
@@ -121,8 +87,9 @@ export const Services = () => {
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <service.icon className="w-7 h-7 sm:w-8 sm:h-8 md:w-7 md:h-7 lg:w-8 lg:h-8" />
+                  {iconMap[index] ? (() => { const Icon = iconMap[index % iconMap.length]!; return <Icon className="w-7 h-7 sm:w-8 sm:h-8 md:w-7 md:h-7 lg:w-8 lg:h-8" />; })() : null}
                 </motion.div>
+                
                 <div className="flex-1 w-full">
                   <h3 className="text-xl sm:text-2xl md:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 md:mb-3 text-[hsl(222,47%,20%)] dark:text-white transition-colors duration-300">
                     {service.title}

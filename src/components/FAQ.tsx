@@ -6,39 +6,11 @@ import {
 } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
 import { HelpCircle, Shield, Zap } from "lucide-react";
-
-const faqs = [
-  {
-    question: "Which ad platforms do you manage?",
-    answer: "Google (Search/PMAX/YouTube), Meta (Facebook/Instagram), TikTok, Snapchat, LinkedIn, and X (Twitter). We also set up pixels, GA4, and GTM."
-  },
-  {
-    question: "How do you structure campaigns?",
-    answer: "We build channel‑specific structures: PMAX asset groups by theme, Search by intent, and Paid Social by creative angles. Weekly optimization with clear guardrails."
-  },
-  {
-    question: "What about tracking and attribution?",
-    answer: "We implement GA4 events, platform pixels, and (optionally) server‑side GTM. We reconcile platform vs GA4 and provide Looker dashboards for ROAS/CAC."
-  },
-  {
-    question: "How fast can we launch?",
-    answer: "Typical timeline: Audit (3–5 days), Tracking fixes (2–5 days), First launch (7–10 days). We iterate weekly from live data."
-  },
-  {
-    question: "Do you create ad creatives?",
-    answer: "Yes. We produce UGC and polished variants tailored per platform and test hooks, angles, and formats to reduce CPA and improve ROAS."
-  },
-  {
-    question: "How do you report performance?",
-    answer: "Weekly summaries with spend, CPA, ROAS, top creatives, learnings, and next actions. Monthly deep dives with attribution and budget recommendations."
-  },
-  {
-    question: "What budgets do you work with?",
-    answer: "We work with a range—from early tests to $500k+/mo. We scale only when unit economics hold, with caps and kill rules to protect efficiency."
-  }
-];
+import { useTranslation } from "react-i18next";
 
 export const FAQ = () => {
+  const { t } = useTranslation();
+  const faqs = (t("faq.items", { returnObjects: true }) as Array<{ q: string; a: string }>);
   return (
     <motion.section 
       id="faq"
@@ -71,17 +43,17 @@ export const FAQ = () => {
             >
               <div className="px-4 py-2 bg-gradient-to-br from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] backdrop-blur-sm rounded-full text-sm font-semibold text-white flex items-center gap-2 border border-[hsl(var(--gold))]/20">
                 <HelpCircle className="w-4 h-4" />
-                <span>Ad Campaign FAQs</span>
+                <span>{t("faq.badge")}</span>
               </div>
             </motion.div>
 
             {/* Heading - Centered */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 text-[hsl(222,47%,20%)] dark:text-white px-2" style={{ textAlign: 'center' }}>
-              Frequently Asked <span className="bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] bg-clip-text text-transparent">Questions</span>
+              {t("faq.heading")} <span className="bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] bg-clip-text text-transparent"></span>
             </h2>
             {/* Description - Centered */}
             <p className="text-base sm:text-lg md:text-xl text-[hsl(220,60%,45%)] dark:text-card-foreground/80 max-w-2xl leading-relaxed px-2 text-center mx-auto">
-              Everything you need to know about our Ad Campaign Management—platforms, tracking, creatives, reporting, and timelines.
+              {t("faq.description")}
             </p>
           </motion.div>
 
@@ -109,11 +81,11 @@ export const FAQ = () => {
                         <span className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[hsl(var(--gold))] dark:bg-[hsl(var(--gold))] flex items-center justify-center text-white text-sm font-bold mt-0.5">
                           {index + 1}
                         </span>
-                        <span className="flex-1">{faq.question}</span>
+                        <span className="flex-1">{faq.q}</span>
                       </span>
                     </AccordionTrigger>
                     <AccordionContent className="text-sm sm:text-base text-card-foreground dark:text-card-foreground/85 leading-relaxed pt-2 pb-5 sm:pb-6 pl-9 sm:pl-10">
-                      {faq.answer}
+                      {faq.a}
                     </AccordionContent>
                   </AccordionItem>
                 </motion.div>
@@ -136,10 +108,10 @@ export const FAQ = () => {
                 </div>
                 <div>
                   <h3 className="text-base sm:text-lg font-bold text-[hsl(222,47%,20%)] dark:text-white mb-1.5">
-                    Tracking Integrity & Compliance
+                    {t("faq.trustIndicator1.title")}
                   </h3>
                   <p className="text-sm text-[hsl(220,60%,45%)] dark:text-card-foreground/80 leading-relaxed">
-                    Pixel hygiene, GA4 events, consent modes, and optional server‑side GTM to preserve accuracy and privacy.
+                    {t("faq.trustIndicator1.description")}
                   </p>
                 </div>
               </div>
@@ -152,10 +124,10 @@ export const FAQ = () => {
                 </div>
                 <div>
                   <h3 className="text-base sm:text-lg font-bold text-[hsl(222,47%,20%)] dark:text-white mb-1.5">
-                    Full‑Funnel Ad Management
+                    {t("faq.trustIndicator2.title")}
                   </h3>
                   <p className="text-sm text-[hsl(220,60%,45%)] dark:text-card-foreground/80 leading-relaxed">
-                    Strategy • Creatives • Launch • Optimization • Reporting • Budget Scaling
+                    {t("faq.trustIndicator2.description")}
                   </p>
                 </div>
               </div>
@@ -171,23 +143,23 @@ export const FAQ = () => {
             transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
           >
             <p className="text-base sm:text-lg md:text-xl font-semibold text-[hsl(222,47%,20%)] dark:text-white mb-2">
-              Still have questions?
+              {t("faq.ctaTitle")}
             </p>
             <p className="text-sm sm:text-base text-[hsl(220,60%,45%)] dark:text-card-foreground/80 mb-4 sm:mb-5">
-              Our team is here to help. Get in touch and we'll respond within 2 hours.
+              {t("faq.ctaSubtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a 
                 href="#contact" 
                 className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-[hsl(217,91%,65%)] to-[hsl(220,90%,60%)] text-white font-semibold rounded-xl hover:from-[hsl(217,91%,70%)] hover:to-[hsl(220,95%,65%)] transition-all duration-300 hover:scale-105 border-0"
               >
-                Contact Support
+                {t("faq.contactSupport")}
               </a>
               <a 
                 href="#pricing" 
                 className="inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-[hsl(217,91%,65%)] text-[hsl(217,91%,65%)] dark:text-[hsl(217,91%,75%)] font-semibold rounded-xl hover:bg-[hsl(217,91%,65%)]/10 transition-all duration-300"
               >
-                View Pricing
+                {t("faq.viewPricing")}
               </a>
             </div>
           </motion.div>

@@ -11,24 +11,77 @@ import { FAQ } from "@/components/FAQ";
 import { CaseStudies } from "@/components/CaseStudies";
 import { Blog } from "@/components/Blog";
 import { FinalCTA } from "@/components/FinalCTA";
+import { motion } from "framer-motion";
 
 const Index = () => {
   return (
     <main className="min-h-screen overflow-x-hidden">
       <Navbar />
       <Hero />
-    
-      <HowItWorks />
-      <Services />
-  
-      <Pricing />
-      <ToolsIntegration />
-      <Testimonials />
-      <Blog />
-      <CaseStudies />
-      <FAQ />
-      
-      <FinalCTA /> 
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={{
+          hidden: {},
+          show: { transition: { staggerChildren: 0.12 } },
+        }}
+      >
+        <motion.div
+          variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <HowItWorks />
+        </motion.div>
+        <motion.div
+          variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <Services />
+        </motion.div>
+        <motion.div
+          variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <Pricing />
+        </motion.div>
+        <motion.div
+          variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <ToolsIntegration />
+        </motion.div>
+        <motion.div
+          variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <Testimonials />
+        </motion.div>
+        <motion.div
+          variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <Blog />
+        </motion.div>
+        <motion.div
+          variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <CaseStudies />
+        </motion.div>
+        <motion.div
+          variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <FAQ />
+        </motion.div>
+        <motion.div
+          variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <FinalCTA />
+        </motion.div>
+      </motion.div>
     </main>
   );
 };

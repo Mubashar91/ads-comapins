@@ -1,30 +1,12 @@
 import { Shield, Clock, Users, Lock } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
-const values = [
-  {
-    icon: Shield,
-    title: "70% Cost Reduction",
-    description: "Guaranteed in most cases"
-  },
-  {
-    icon: Users,
-    title: "Native German Quality Control",
-    description: "Direct oversight by native speakers"
-  },
-  {
-    icon: Clock,
-    title: "24h Replacement Guarantee",
-    description: "Seamless continuity assured"
-  },
-  {
-    icon: Lock,
-    title: "Full Confidentiality & NDAs",
-    description: "Your data stays secure"
-  }
-];
+const iconMap = [Shield, Users, Clock, Lock];
 
 export const ValueProposition = () => {
+  const { t } = useTranslation();
+  const values = (t("value.items", { returnObjects: true }) as Array<{ title: string; description: string }>);
   return (
     <motion.section 
       className="relative py-8 sm:py-10 md:py-12 lg:py-14 bg-background z-10"
@@ -45,7 +27,7 @@ export const ValueProposition = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Why <span className="bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] bg-clip-text text-transparent">200+</span> Brands Choose Our SMM Team
+            {t("value.heading")}
           </h2>
         </motion.div>
         
@@ -68,7 +50,7 @@ export const ValueProposition = () => {
               
               <div className="relative">
                 <div className="mb-6 inline-flex p-4 rounded-xl bg-gradient-to-br from-green-600 via-green-700 to-green-800 text-white ring-1 ring-green-600/30 group-hover:scale-110 transition-all duration-500 shadow-[0_18px_40px_-12px_rgba(34,197,94,0.6)]">
-                  <value.icon className="w-8 h-8" />
+                  {(() => { const Icon = iconMap[index % iconMap.length]!; return <Icon className="w-8 h-8" />; })()}
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white transition-colors duration-300">
                   {value.title}

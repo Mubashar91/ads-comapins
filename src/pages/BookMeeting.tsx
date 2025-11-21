@@ -62,12 +62,12 @@ export const BookMeeting = () => {
                 whileHover={{ rotate: 5, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
-                <span className="text-foreground font-black text-xl sm:text-2xl">L</span>
+                <span className="text-foreground font-black text-xl sm:text-2xl">D</span>
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
               <div className="flex flex-col">
                 <span className="text-xl sm:text-2xl font-black bg-gradient-to-r from-foreground via-foreground to-foreground/90 bg-clip-text text-transparent group-hover:from-gold group-hover:to-yellow-600 transition-all duration-300">
-                  LuxVA
+                  DON VA
                 </span>
                 <span className="text-[10px] sm:text-xs text-gold/80 font-semibold -mt-1 tracking-wide">Premium VAs</span>
               </div>
@@ -109,7 +109,7 @@ export const BookMeeting = () => {
                   className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-foreground font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2"
                 >
                   <Calendar className="w-4 h-4 mr-2" />
-                  Book Now
+                  Jetzt buchen
                 </Button>
               </motion.div>
             </div>
@@ -166,7 +166,7 @@ export const BookMeeting = () => {
                       className="w-full bg-gradient-to-r from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-foreground font-bold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                       <Calendar className="w-5 h-5 mr-2" />
-                      Book Your Meeting Now
+                      Jetzt Termin vereinbaren
                     </Button>
                   </motion.div>
                   
@@ -183,7 +183,7 @@ export const BookMeeting = () => {
                       className="w-full justify-start text-muted-foreground hover:text-gold hover:bg-gold/5 py-3 rounded-xl transition-all duration-300 group"
                     >
                       <ArrowLeft className="w-5 h-5 mr-3 group-hover:-translate-x-1 transition-transform duration-300" />
-                      <span className="font-semibold">Back to Home</span>
+                      <span className="font-semibold">Zur Startseite</span>
                     </Button>
                   </motion.div>
                   
@@ -199,7 +199,7 @@ export const BookMeeting = () => {
                         <Phone className="w-5 h-5 text-gold" />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xs text-muted-foreground/60 font-medium">Call Us</span>
+                        <span className="text-xs text-muted-foreground/60 font-medium">Anrufen</span>
                         <span className="font-semibold">+1 (234) 567-890</span>
                       </div>
                     </motion.a>
@@ -215,7 +215,7 @@ export const BookMeeting = () => {
                         <Mail className="w-5 h-5 text-gold" />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xs text-muted-foreground/60 font-medium">Email Us</span>
+                        <span className="text-xs text-muted-foreground/60 font-medium">E-Mail</span>
                         <span className="font-semibold">contact@luxva.com</span>
                       </div>
                     </motion.a>
@@ -240,17 +240,17 @@ export const BookMeeting = () => {
             {/* Section Header */}
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold mb-3 text-foreground">
-                Book Your Consultation
+                Beratung buchen
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Schedule a free 15-minute call to discuss how we can help your business.
+                Vereinbaren Sie ein kostenloses 15‑minütiges Gespräch, um zu besprechen, wie wir Ihr Unternehmen unterstützen können.
               </p>
             </div>
 
             {/* Meeting Details */}
             <div className="space-y-4 p-5 sm:p-6 bg-card border border-border rounded-xl shadow-md">
               <h3 className="text-lg sm:text-xl font-bold text-foreground mb-4">
-                What to Expect
+                Das erwartet Sie
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -259,10 +259,10 @@ export const BookMeeting = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-base text-foreground mb-1">
-                      15-Minute Session
+                      15‑Minuten Termin
                     </h4>
                     <p className="text-sm text-muted-foreground">
-                      Quick, focused discussion about your needs
+                      Kurzes, fokussiertes Gespräch zu Ihren Anforderungen
                     </p>
                   </div>
                 </div>
@@ -273,10 +273,10 @@ export const BookMeeting = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-base text-foreground mb-1">
-                      Virtual Meeting
+                      Virtuelles Meeting
                     </h4>
                     <p className="text-sm text-muted-foreground">
-                      Join via Google Meet or Zoom
+                      Teilnahme über Google Meet oder Zoom
                     </p>
                   </div>
                 </div>
@@ -287,10 +287,10 @@ export const BookMeeting = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-base text-foreground mb-1">
-                      No Commitment
+                      Keine Verpflichtung
                     </h4>
                     <p className="text-sm text-muted-foreground">
-                      Free consultation with no obligations
+                      Kostenloses Beratungsgespräch ohne Verpflichtungen
                     </p>
                   </div>
                 </div>
@@ -300,15 +300,15 @@ export const BookMeeting = () => {
             {/* What We'll Cover */}
             <div className="space-y-4 p-5 sm:p-6 bg-gold/5 border border-gold/20 rounded-xl">
               <h3 className="text-lg sm:text-xl font-bold text-foreground mb-4">
-                We'll Discuss
+                Wir besprechen
               </h3>
               <ul className="space-y-3">
                 {[
-                  "Your current operational challenges",
-                  "How VAs can fit into your workflow",
-                  "Custom solutions for your business",
-                  "Pricing & team structure options",
-                  "Next steps to get started",
+                  "Ihre aktuellen operativen Herausforderungen",
+                  "Wie VAs in Ihren Workflow passen",
+                  "Individuelle Lösungen für Ihr Unternehmen",
+                  "Preise & Teamstruktur‑Optionen",
+                  "Nächste Schritte für den Start",
                 ].map((item, index) => (
                   <li
                     key={index}
@@ -329,15 +329,15 @@ export const BookMeeting = () => {
             <div className="grid grid-cols-3 gap-4 pt-4">
               <div className="text-center p-4 bg-card border border-border rounded-lg">
                 <div className="text-2xl font-bold text-gold">200+</div>
-                <div className="text-xs text-muted-foreground mt-1">Clients</div>
+                <div className="text-xs text-muted-foreground mt-1">Kunden</div>
               </div>
               <div className="text-center p-4 bg-card border border-border rounded-lg">
                 <div className="text-2xl font-bold text-gold">70%</div>
-                <div className="text-xs text-muted-foreground mt-1">Cost Saved</div>
+                <div className="text-xs text-muted-foreground mt-1">Kosteneinsparung</div>
               </div>
               <div className="text-center p-4 bg-card border border-border rounded-lg">
                 <div className="text-2xl font-bold text-gold">4.9/5</div>
-                <div className="text-xs text-muted-foreground mt-1">Rating</div>
+                <div className="text-xs text-muted-foreground mt-1">Bewertung</div>
               </div>
             </div>
           </motion.div>
@@ -373,10 +373,10 @@ export const BookMeeting = () => {
         >
           <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-foreground">
-              What Our Clients Say
+              Was unsere Kunden sagen
             </h2>
             <p className="text-muted-foreground">
-              See why businesses trust LuxVA
+              Warum Unternehmen DON VA vertrauen
             </p>
           </div>
           
@@ -385,19 +385,19 @@ export const BookMeeting = () => {
               {
                 name: "Sarah Johnson",
                 role: "CEO, TechStart Inc",
-                text: "LuxVA transformed our operations. The consultation was thorough and the onboarding was seamless.",
+                text: "DON VA hat unsere Abläufe transformiert. Die Beratung war fundiert und das Onboarding nahtlos.",
                 rating: 5
               },
               {
                 name: "Michael Chen",
                 role: "Founder, Digital Growth",
-                text: "Best decision we made. Our VA has become an integral part of our team within weeks.",
+                text: "Die beste Entscheidung. Unsere VA wurde innerhalb weniger Wochen ein fester Teil des Teams.",
                 rating: 5
               },
               {
                 name: "Emma Davis",
                 role: "Director, MarketPro",
-                text: "Professional, reliable, and cost-effective. Couldn't ask for more from a VA service.",
+                text: "Professionell, verlässlich und kosteneffizient. Mehr kann man von einem VA‑Service nicht erwarten.",
                 rating: 5
               }
             ].map((testimonial, idx) => (
@@ -439,12 +439,12 @@ export const BookMeeting = () => {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-gradient-to-br from-gold to-yellow-600 rounded-lg flex items-center justify-center">
-                <span className="text-foreground font-extrabold text-sm">L</span>
+                <span className="text-foreground font-extrabold text-sm">D</span>
               </div>
-              <span className="text-lg font-bold">LuxVA</span>
+              <span className="text-lg font-bold">DON VA</span>
             </div>
             <p className="text-sm text-muted-foreground text-center sm:text-left">
-              © 2025 LuxVA. All rights reserved. Premium Virtual Assistant Services.
+              © 2025 DON VA. Alle Rechte vorbehalten. Premium Virtual‑Assistant‑Services.
             </p>
             <div className="flex gap-4">
               <a href="#" className="text-muted-foreground hover:text-gold transition-colors text-sm">

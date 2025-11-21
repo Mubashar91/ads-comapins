@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { TrendingUp, Users, Clock, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface CaseStudy {
   id: number;
@@ -89,6 +90,8 @@ export { caseStudies };
 
 export const CaseStudies = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const items = (t("caseStudiesList.items", { returnObjects: true }) as CaseStudy[]) || caseStudies;
 
   return (
     <motion.section
@@ -109,19 +112,19 @@ export const CaseStudies = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-br from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] text-white text-xs sm:text-sm font-semibold rounded-full mb-3 sm:mb-4">
-            Success Stories
+            {t("caseStudiesList.badge")}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-[hsl(222,47%,11%)] dark:text-foreground">
-            Ad Campaign Success Stories
+            {t("caseStudiesList.heading")}
           </h2>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl leading-relaxed">
-            See how we scaled profitably across Google, Meta, TikTok, Snapchat, LinkedIn, and X with creative testing, robust tracking, and weekly optimization.
+            {t("caseStudiesList.subtitle")}
           </p>
         </motion.div>
 
         {/* Case Studies Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto">
-          {caseStudies.map((study, index) => (
+          {items.map((study, index) => (
             <motion.article
               key={study.id}
               initial={{ opacity: 0, y: 50 }}
@@ -172,15 +175,15 @@ export const CaseStudies = () => {
                 <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-4 sm:mb-5 pb-4 sm:pb-5 border-b border-[hsl(220,40%,92%)] dark:border-border/50">
                   <div className="text-center">
                     <div className="text-[hsl(222,47%,20%)] dark:text-white font-bold text-sm sm:text-base lg:text-lg">{study.stats.mainResult}</div>
-                    <div className="text-[10px] sm:text-xs text-[hsl(217,91%,65%)] dark:text-[hsl(217,91%,75%)]">Result</div>
+                    <div className="text-[10px] sm:text-xs text-[hsl(217,91%,65%)] dark:text-[hsl(217,91%,75%)]">{t("caseStudiesList.statResult")}</div>
                   </div>
                   <div className="text-center">
                     <div className="text-[hsl(222,47%,20%)] dark:text-white font-bold text-sm sm:text-base lg:text-lg">{study.stats.seoFocus}</div>
-                    <div className="text-[10px] sm:text-xs text-[hsl(217,91%,65%)] dark:text-[hsl(217,91%,75%)]">Focus</div>
+                    <div className="text-[10px] sm:text-xs text-[hsl(217,91%,65%)] dark:text-[hsl(217,91%,75%)]">{t("caseStudiesList.statFocus")}</div>
                   </div>
                   <div className="text-center">
                     <div className="text-[hsl(222,47%,20%)] dark:text-white font-bold text-sm sm:text-base lg:text-lg">{study.stats.timeframe}</div>
-                    <div className="text-[10px] sm:text-xs text-[hsl(217,91%,65%)] dark:text-[hsl(217,91%,75%)]">Timeframe</div>
+                    <div className="text-[10px] sm:text-xs text-[hsl(217,91%,65%)] dark:text-[hsl(217,91%,75%)]">{t("caseStudiesList.statTimeframe")}</div>
                   </div>
                 </div>
 
@@ -196,8 +199,8 @@ export const CaseStudies = () => {
 
                 {/* Read more */}
                 <div className="flex items-center gap-1 sm:gap-2 text-[hsl(217,91%,65%)] dark:text-[hsl(217,91%,75%)] font-semibold text-xs sm:text-sm group-hover:gap-2 sm:group-hover:gap-3 transition-all">
-                  <span className="hidden sm:inline">View Full Case Study</span>
-                  <span className="sm:hidden">View Study</span>
+                  <span className="hidden sm:inline">{t("caseStudy.viewFullCase")}</span>
+                  <span className="sm:hidden">{t("caseStudiesList.readShort")}</span>
                   <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
                 </div>
               </div>
@@ -214,11 +217,11 @@ export const CaseStudies = () => {
           className="mt-8 sm:mt-12 lg:mt-16 text-center"
         >
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-4 sm:mb-6">
-            Ready to write your own success story?
+            {t("caseStudiesList.ctaPrompt")}
           </p>
           <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-br from-[hsl(270,80%,65%)] via-[hsl(260,85%,60%)] to-[hsl(250,70%,55%)] text-white font-semibold text-sm sm:text-base rounded-lg sm:rounded-xl hover:from-[hsl(270,80%,70%)] hover:via-[hsl(260,85%,65%)] hover:to-[hsl(250,70%,60%)] transition-all duration-300 hover:scale-105 shadow-lg">
-            <span className="hidden sm:inline">Book Your Free Consultation →</span>
-            <span className="sm:hidden">Get Started →</span>
+            <span className="hidden sm:inline">{t("caseStudiesList.ctaPrimaryDesktop")}</span>
+            <span className="sm:hidden">{t("caseStudiesList.ctaPrimaryMobile")}</span>
           </button>
         </motion.div>
       </div>

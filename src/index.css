@@ -487,6 +487,46 @@ All colors MUST be HSL.
     -webkit-backdrop-filter: blur(24px);
   }
 
+  /* Animated grid background */
+  .animated-grid {
+    background: linear-gradient(90deg, #fff 0%, #fff 100%);
+    background-size: 400px 400px;
+    animation: grid-flow 10s linear infinite;
+  }
+
+  @keyframes grid-flow {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+
+  /* Particle helper styles */
+  .particle-helper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .particle-helper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, #fff 0%, #fff 100%);
+    background-size: 200px 200px;
+    animation: particle-flow 5s linear infinite;
+  }
+
+  @keyframes particle-flow {
+    0% {
+      transform: translateX(0%) translateY(0%);
+    }
+    100% {
+      transform: translateX(100%) translateY(100%);
+    }
+  }
+
 }
 
 @layer utilities {

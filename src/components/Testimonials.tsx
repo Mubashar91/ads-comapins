@@ -1,32 +1,13 @@
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
-const testimonials = [
-  {
-    name: "Emma Rodriguez",
-    company: "Luxe Beauty Co.",
-    role: "Founder",
-    content: "We scaled Meta + Google without sacrificing ROAS. The weekly creative tests and budget guardrails made growth predictable.",
-    rating: 5
-  },
-  {
-    name: "David Chen",
-    company: "Peak Performance",
-    role: "CEO",
-    content: "LinkedIn + Search finally drove qualified SQLs at a lower blended CAC. Reporting was clear and actionable.",
-    rating: 5
-  },
-  {
-    name: "Sophie Martens",
-    company: "Urban Eats",
-    role: "Marketing Lead",
-    content: "TikTok + Snapchat added real incremental orders. Creative iterations each week kept CPA trending down.",
-    rating: 5
-  }
-];
+type TestimonialItem = { name: string; company: string; role: string; content: string; rating: number };
 
 export const Testimonials = () => {
+  const { t } = useTranslation();
+  const testimonials = (t("testimonials.items", { returnObjects: true }) as TestimonialItem[]) || [];
   return (
     <motion.section 
       id="testimonials"
@@ -45,13 +26,13 @@ export const Testimonials = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 text-[hsl(222,47%,20%)] dark:text-white leading-tight tracking-tight px-2">
-            Real Results from <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] bg-clip-text text-transparent bg-[length:200%_100%]">Growth Teams</span>
+            {t("testimonials.headingPrefix")} <span className="relative inline-block">
+              <span className="bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] bg-clip-text text-transparent bg-[length:200%_100%]">{t("testimonials.headingEmphasis")}</span>
               <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[hsl(var(--gold))]/40 to-transparent"></span>
             </span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl px-2">
-            Real results—lower CPA, higher ROAS, and faster learning loops across Google, Meta, TikTok, Snapchat, LinkedIn, and X.
+            {t("testimonials.subtitle")}
           </p>
         </motion.div>
 
@@ -116,16 +97,16 @@ export const Testimonials = () => {
         >
           <div className="text-left">
             <span className="inline-block px-3 py-1 bg-card dark:bg-[hsl(250,45%,20%)]/50 text-[hsl(var(--gold))] dark:text-[hsl(var(--gold))] text-xs sm:text-sm font-semibold rounded-full mb-3 sm:mb-4">
-              Success Story
+              {t("testimonials.successStory")}
             </span>
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-[hsl(250,50%,20%)] dark:text-white">
-              Case Study: <span className="bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] bg-clip-text text-transparent">3.4x ROAS Scaling Across Channels</span>
+              {t("testimonials.caseStudyPrefix")} <span className="bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] bg-clip-text text-transparent">{t("testimonials.caseStudyTitle")}</span>
             </h3>
             <p className="text-sm sm:text-base md:text-lg text-[hsl(220,30%,50%)] dark:text-white mb-5 sm:mb-6 leading-relaxed max-w-3xl">
-              See how we combined PMAX + Meta creative testing to scale budget while improving CPA—validated in GA4.
+              {t("testimonials.caseStudyDesc")}
             </p>
             <Button size="lg" className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] text-white hover:opacity-95 transition-all duration-300 hover:scale-105 font-semibold border-0">
-              View Full Case Study
+              {t("testimonials.viewFull")}
             </Button>
           </div>
         </motion.div>

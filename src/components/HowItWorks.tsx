@@ -1,35 +1,13 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Search, Settings, Rocket, TrendingUp } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-const steps = [
-  {
-    icon: Search,
-    step: "Step 1",
-    title: "Audit & Strategy",
-    description: "Analyze current campaigns, identify opportunities, and define KPIs. Map out channel strategy, budget allocation, and tracking requirements."
-  },
-  {
-    icon: Settings,
-    step: "Step 2",
-    title: "Setup & Implementation",
-    description: "Build campaign structures, implement pixels and GA4 events, configure GTM. Set up creative testing frameworks and tracking dashboards."
-  },
-  {
-    icon: Rocket,
-    step: "Step 3",
-    title: "Launch & Test",
-    description: "Deploy campaigns across channels, launch creative variants, and monitor initial performance. Rapid testing to identify winning combinations."
-  },
-  {
-    icon: TrendingUp,
-    step: "Step 4",
-    title: "Optimize & Scale",
-    description: "Weekly optimization based on data, scale winning campaigns, adjust budgets. Continuous creative testing and performance reporting."
-  }
-];
+const iconMap = [Search, Settings, Rocket, TrendingUp];
 
 export const HowItWorks = () => {
   const prefersReducedMotion = useReducedMotion();
+  const { t } = useTranslation();
+  const steps = (t("how.steps", { returnObjects: true }) as Array<{ step: string; title: string; description: string }>);
   return (
     <motion.section 
       id="how-it-works"
@@ -52,16 +30,16 @@ export const HowItWorks = () => {
             whileHover={{ scale: 1.05 }}
           >
             <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-50"></span>
-            <span className="relative z-10">Our Process (4 Steps)</span>
+            <span className="relative z-10">{t("how.badge")}</span>
           </motion.span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-[hsl(222,47%,20%)] dark:text-white leading-tight tracking-tight">
-            How We <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] bg-clip-text text-transparent bg-[length:200%_100%]">Execute</span>
+            {t("how.headingPrefix")} <span className="relative inline-block">
+              <span className="bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] bg-clip-text text-transparent bg-[length:200%_100%]">{t("how.headingEmphasis")}</span>
               <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[hsl(var(--gold))]/40 to-transparent"></span>
             </span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
-            From audit to optimization in 7–14 days. Data-driven process, measurable results, and continuous improvement.
+            {t("how.subtitle")}
           </p>
         </motion.div>
 
@@ -82,7 +60,11 @@ export const HowItWorks = () => {
                   transition={{ duration: 0.45, ease: "easeInOut" }}
                 >
                   <div className="absolute inset-0 rounded-full bg-[hsl(var(--gold))]/20 blur-md group-hover:blur-lg transition-all duration-500" />
-                  <step.icon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white relative z-10" />
+                  {iconMap[index] ? (
+                    <span className="relative z-10">
+                      {(() => { const Icon = iconMap[index]!; return <Icon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white" />; })()}
+                    </span>
+                  ) : null}
                   <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-7 h-7 sm:w-8 sm:h-8 bg-[hsl(250,100%,98%)] dark:bg-[hsl(250,45%,20%)] text-[hsl(var(--gold))] dark:text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-bold border-2 border-[hsl(var(--gold))] dark:border-[hsl(var(--gold))]">
                     {index + 1}
                   </div>
@@ -140,7 +122,7 @@ export const HowItWorks = () => {
             transition={{ duration: prefersReducedMotion ? 0.3 : 0.5 }}
           >
             <a href="#contact" className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] text-white hover:opacity-95 hover:scale-105 transition-all duration-300 font-semibold shadow-lg">
-              Book Strategy Call
+              {t("how.cta")}
             </a>
           </motion.div>
         </div>

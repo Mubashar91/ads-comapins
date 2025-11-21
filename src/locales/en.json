@@ -1,0 +1,447 @@
+{
+  "navbar": {
+    "services": "Services",
+    "howItWorks": "How It Works",
+    "pricing": "Pricing",
+    "testimonials": "Testimonials",
+    "faq": "Ad Campaign FAQs",
+    "bookCall": "Book Strategy Call"
+  },
+  "blogList": {
+    "badge": "Performance Insights",
+    "headingPrefix": "Blog &",
+    "headingEmphasis": "Ad Playbooks",
+    "subtitle": "Multi‑platform ad strategies, creative frameworks, tracking setups, and reporting that drive ROAS across Google, Meta, TikTok, Snapchat, LinkedIn, and X.",
+    "by": "By",
+    "read": "Read",
+    "items": [
+      {
+        "id": 1,
+        "title": "PMAX + Search: Structuring Google Ads for Scale",
+        "excerpt": "When to split Search vs PMAX, asset group strategy, and how to read signals for profitable expansion.",
+        "content": "",
+        "author": "Growth Team",
+        "date": "October 15, 2025",
+        "readTime": "7 min read",
+        "category": "Google Ads",
+        "image": "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        "id": 2,
+        "title": "Meta Creative Testing: From Hook to Hold",
+        "excerpt": "A framework for testing angles, hooks, formats, and iterations to reduce CPA and raise ROAS.",
+        "content": "",
+        "author": "Paid Social",
+        "date": "October 8, 2025",
+        "readTime": "6 min read",
+        "category": "Meta Ads",
+        "image": "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        "id": 3,
+        "title": "TikTok Ads: Creative that Converts (Without Looking Like Ads)",
+        "excerpt": "Native-feel content, trend alignment, and the first 3 seconds that make or break performance.",
+        "content": "",
+        "author": "Creative Lab",
+        "date": "September 28, 2025",
+        "readTime": "5 min read",
+        "category": "TikTok",
+        "image": "https://images.unsplash.com/photo-1529336953121-ad5a0d43d0d2?w=800&auto=format&fit=crop&q=80"
+      }
+    ]
+  },
+  "hero": {
+    "badge": "Trusted by 300+ Growth Teams Worldwide",
+    "headingPrefix": "Profitable",
+    "headingEmphasis": "Ad Management",
+    "subtitle": "Plan, launch, and scale ads across Google, Meta, TikTok, Snapchat, LinkedIn, and X. Full‑funnel strategy, creatives, tracking, and weekly performance optimization.",
+    "ctaAria": "Book a free 30-minute strategy call",
+    "ctaPrimaryDesktop": "Book Strategy Call (30 min)",
+    "ctaPrimaryMobile": "Book Call",
+    "urgency": "Free design mockup + strategy session included",
+    "topRated": "Top Rated",
+    "imgAlt": "Creative graphic design workspace with vibrant projects",
+    "statProjects": "Projects Delivered",
+    "statTurnaround": "Avg Turnaround (days)",
+    "statSatisfaction": "Client Satisfaction"
+  },
+  "notFound": {
+    "code": "404",
+    "subtitle": "Oops! Page not found",
+    "home": "Return to Home"
+  },
+  "how": {
+    "badge": "Our Process (4 Steps)",
+    "headingPrefix": "How We",
+    "headingEmphasis": "Execute",
+    "subtitle": "From audit to optimization in 7–14 days. Data-driven process, measurable results, and continuous improvement.",
+    "cta": "Book Strategy Call",
+    "steps": [
+      {
+        "step": "Step 1",
+        "title": "Audit & Strategy",
+        "description": "Analyze current campaigns, identify opportunities, and define KPIs. Map out channel strategy, budget allocation, and tracking requirements."
+      },
+      {
+        "step": "Step 2",
+        "title": "Setup & Implementation",
+        "description": "Build campaign structures, implement pixels and GA4 events, configure GTM. Set up creative testing frameworks and tracking dashboards."
+      },
+      {
+        "step": "Step 3",
+        "title": "Launch & Test",
+        "description": "Deploy campaigns across channels, launch creative variants, and monitor initial performance. Rapid testing to identify winning combinations."
+      },
+      {
+        "step": "Step 4",
+        "title": "Optimize & Scale",
+        "description": "Weekly optimization based on data, scale winning campaigns, adjust budgets. Continuous creative testing and performance reporting."
+      }
+    ]
+  },
+  "caseStudiesList": {
+    "badge": "Success Stories",
+    "heading": "Ad Campaign Success Stories",
+    "subtitle": "See how we scaled profitably across Google, Meta, TikTok, Snapchat, LinkedIn, and X with creative testing, robust tracking, and weekly optimization.",
+    "statResult": "Result",
+    "statFocus": "Focus",
+    "statTimeframe": "Timeframe",
+    "readShort": "View Study",
+    "ctaPrompt": "Ready to write your own success story?",
+    "ctaPrimaryDesktop": "Book Your Free Consultation →",
+    "ctaPrimaryMobile": "Get Started →",
+    "items": [
+      {
+        "id": 1,
+        "title": "Scaling DTC with PMAX + UGC on Meta",
+        "company": "Luxe Beauty Co.",
+        "industry": "DTC Beauty",
+        "challenge": "Rising CPAs on Meta and stagnating Google Search. Needed fresh creative and broader reach without tanking ROAS.",
+        "solution": "UGC creative testing on Meta (hooks/angles) + PMAX asset groups by theme. Weekly optimization with budget guardrails and GA4 validation.",
+        "results": [
+          { "metric": "ROAS", "value": "3.4x", "description": "Blended across Meta/Google" }
+        ],
+        "testimonial": "The weekly cadence and creative testing unlocked scale without sacrificing ROAS.",
+        "testimonialAuthor": "Emma Rodriguez",
+        "testimonialRole": "Founder, Luxe Beauty Co.",
+        "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop",
+        "stats": { "mainResult": "3.4x ROAS", "timeframe": "8 weeks", "seoFocus": "Meta + PMAX" }
+      },
+      {
+        "id": 2,
+        "title": "B2B Pipeline: LinkedIn + Search Capture",
+        "company": "Peak Performance",
+        "industry": "B2B Services",
+        "challenge": "Expensive leads on LinkedIn and poor MQL quality from forms. Needed pipeline growth at lower blended CAC.",
+        "solution": "ABM audience layers on LinkedIn with thought‑leadership + high‑intent Google Search. CRO tweaks and attribution clean‑up in GA4/GTM.",
+        "results": [
+          { "metric": "CAC", "value": "-32%", "description": "Blended across channels" }
+        ],
+        "testimonial": "Quality leads finally. The ABM + Search combo changed our pipeline overnight.",
+        "testimonialAuthor": "David Chen",
+        "testimonialRole": "CEO, Peak Performance",
+        "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop",
+        "stats": { "mainResult": "-32% CAC", "timeframe": "6 weeks", "seoFocus": "LinkedIn + Search" }
+      },
+      {
+        "id": 3,
+        "title": "Unlocking Incremental Lift with TikTok + Snapchat",
+        "company": "CloudFlow",
+        "industry": "SaaS",
+        "challenge": "Search was tapped out; needed incremental volume. Unsure how to measure lift across new social channels.",
+        "solution": "TikTok + Snapchat creatives with weekly iterations, event mapping, and platform/GA4 lift studies. Budget rules and holdout tests.",
+        "results": [
+          { "metric": "Lift", "value": "+22%", "description": "Incremental signups" }
+        ],
+        "testimonial": "We found real incremental volume instead of cannibalizing Search.",
+        "testimonialAuthor": "Marco Schneider",
+        "testimonialRole": "VP Marketing, CloudFlow",
+        "image": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop",
+        "stats": { "mainResult": "+22% Lift", "timeframe": "5 weeks", "seoFocus": "TikTok + Snapchat" }
+      }
+    ]
+  },
+  
+  "blog": {
+    "notFound": "Blog Post Not Found",
+    "backHome": "Return to Home",
+    "backToHome": "Back to Home",
+    "ctaTitle": "Ready to Transform Your Business?",
+    "ctaSubtitle": "Book a free consultation and discover how virtual assistants can help you scale.",
+    "ctaPrimary": "Book Free Consultation →",
+    "ctaPrimaryMobile": "Get Started →",
+    "moreArticles": "More Articles"
+  },
+  "caseStudy": {
+    "notFound": "Case Study Not Found",
+    "backHome": "Back to Home",
+    "annualSavings": "Annual Savings",
+    "teamSize": "Team Size",
+    "implementation": "Implementation",
+    "challenge": "The Challenge",
+    "solution": "The Solution",
+    "results": "The Results",
+    "successBadge": "Success Awaits",
+    "readyTitlePrefix": "Ready to Achieve",
+    "readyTitleEmphasis": "Similar Results?",
+    "ctaBook": "Book Free Consultation",
+    "ctaViewAll": "View All Case Studies",
+    "benefitNoCommitment": "No Commitment",
+    "benefit15Min": "15 Minutes",
+    "benefitFree": "100% Free",
+    "moreSuccess": "More Success Stories",
+    "viewFullCase": "View Full Case Study",
+    "viewCaseStudy": "View Case Study"
+  },
+  "testimonials": {
+    "headingPrefix": "Real Results from",
+    "headingEmphasis": "Growth Teams",
+    "subtitle": "Real results—lower CPA, higher ROAS, and faster learning loops across Google, Meta, TikTok, Snapchat, LinkedIn, and X.",
+    "successStory": "Success Story",
+    "caseStudyPrefix": "Case Study:",
+    "caseStudyTitle": "3.4x ROAS Scaling Across Channels",
+    "caseStudyDesc": "See how we combined PMAX + Meta creative testing to scale budget while improving CPA—validated in GA4.",
+    "viewFull": "View Full Case Study",
+    "items": [
+      {
+        "name": "Emma Rodriguez",
+        "company": "Luxe Beauty Co.",
+        "role": "Founder",
+        "content": "We scaled Meta + Google without sacrificing ROAS. The weekly creative tests and budget guardrails made growth predictable.",
+        "rating": 5
+      },
+      {
+        "name": "David Chen",
+        "company": "Peak Performance",
+        "role": "CEO",
+        "content": "LinkedIn + Search finally drove qualified SQLs at a lower blended CAC. Reporting was clear and actionable.",
+        "rating": 5
+      },
+      {
+        "name": "Sophie Martens",
+        "company": "Urban Eats",
+        "role": "Marketing Lead",
+        "content": "TikTok + Snapchat added real incremental orders. Creative iterations each week kept CPA trending down.",
+        "rating": 5
+      }
+    ]
+  },
+  "services": {
+    "badge": "Ad Campaign Services",
+    "headingPrefix": "Full-Funnel",
+    "headingEmphasis": "Ad Management",
+    "intro": "Google, Meta, TikTok, Snapchat, LinkedIn, and X—planned, launched, and optimized with creative testing, robust tracking, and clear reporting.",
+    "items": [
+      {
+        "title": "Ad Strategy & Planning",
+        "description": "Full‑funnel strategy, audience research, budgets, and channel mix to hit your CAC and ROAS targets",
+        "benefit": "Clear growth plan"
+      },
+      {
+        "title": "Google Ads (Search/PMAX/YouTube)",
+        "description": "Build and optimize Search, Performance Max, and YouTube campaigns with robust keyword and creative testing",
+        "benefit": "Capture intent"
+      },
+      {
+        "title": "Meta & TikTok Ads",
+        "description": "High‑performing creatives and structures across Facebook, Instagram, and TikTok with ongoing A/B testing",
+        "benefit": "Scale creatives"
+      },
+      {
+        "title": "LinkedIn & X (Twitter) Ads",
+        "description": "B2B targeting on LinkedIn plus trend‑aware X campaigns for awareness, traffic, and demand capture",
+        "benefit": "Reach decision‑makers"
+      },
+      {
+        "title": "Snapchat & Emerging Platforms",
+        "description": "Expand reach with Snapchat and other paid social where your buyers spend time, tracked end‑to‑end",
+        "benefit": "Unlock reach"
+      },
+      {
+        "title": "Tracking, Analytics & CRO",
+        "description": "GTM/GA4, pixels, server‑side tracking, dashboards, and landing page optimization for real performance",
+        "benefit": "Measure & improve"
+      }
+    ]
+  },
+  "value": {
+    "heading": "Why 200+ Brands Choose Our SMM Team",
+    "items": [
+      { "title": "70% Cost Reduction", "description": "Guaranteed in most cases" },
+      { "title": "Native German Quality Control", "description": "Direct oversight by native speakers" },
+      { "title": "24h Replacement Guarantee", "description": "Seamless continuity assured" },
+      { "title": "Full Confidentiality & NDAs", "description": "Your data stays secure" }
+    ]
+  },
+  "pricing": {
+    "badge": "Transparent Pricing",
+    "headingPrefix": "Ad Campaign",
+    "headingEmphasis": "Packages",
+    "intro": "Choose a plan that fits your channels and goals. Scale budgets only when unit economics hold. No hidden fees.",
+    "trialTitle": "One Week Free Trial",
+    "freeBanner": "New customers get 7 days free on any plan. No credit card required.",
+    "startTrial": "Start Free Trial",
+    "tagLabel": "Ad Campaigns",
+    "perMonth": "/mo",
+    "noSetupFee": "No setup fee",
+    "setupFeeWithAmount": "+ {{amount}} setup fee",
+    "startAudit": "Start Free Audit",
+    "disclaimer": "All plans are billed monthly with no long-term contracts. Upgrade or downgrade anytime. Typical turnaround 24–72h depending on volume.",
+    "plans": [
+      {
+        "name": "Launch",
+        "hours": "Single channel (Google or Meta)",
+        "price": 1499,
+        "setupFee": 0,
+        "features": [
+          "Account audit & strategy (1x)",
+          "Campaign setup (Search/PMAX or Meta)",
+          "Pixel/GA4 event mapping",
+          "2 creatives or variants included",
+          "Weekly optimization & report"
+        ],
+        "highlighted": false
+      },
+      {
+        "name": "Scale",
+        "hours": "Multi‑channel (2–3 platforms)",
+        "price": 3499,
+        "setupFee": 0,
+        "badge": "Most Popular",
+        "features": [
+          "Everything in Launch",
+          "PMAX + Paid Social structure",
+          "Creative testing framework",
+          "Server‑side GTM (optional)",
+          "Weekly call + Looker dashboard",
+          "Priority support"
+        ],
+        "highlighted": true
+      },
+      {
+        "name": "Enterprise",
+        "hours": "Full‑funnel (4+ platforms)",
+        "price": 4999,
+        "setupFee": 0,
+        "badge": "Best Value",
+        "features": [
+          "Everything in Scale",
+          "ABM + LinkedIn + X (B2B)",
+          "Lift studies & holdout tests",
+          "Landing page CRO support",
+          "Dedicated strategist",
+          "Custom SLAs & integrations"
+        ],
+        "highlighted": false
+      }
+    ]
+  },
+  "faq": {
+    "badge": "Ad Campaign FAQs",
+    "heading": "Frequently Asked Questions",
+    "description": "Everything you need to know about our Ad Campaign Management—platforms, tracking, creatives, reporting, and timelines.",
+    "contactSupport": "Contact Support",
+    "viewPricing": "View Pricing",
+    "ctaTitle": "Still have questions?",
+    "ctaSubtitle": "Our team is here to help. Get in touch and we'll respond within 2 hours.",
+    "trustIndicator1": {
+      "title": "Tracking Integrity & Compliance",
+      "description": "Pixel hygiene, GA4 events, consent modes, and optional server‑side GTM to preserve accuracy and privacy."
+    },
+    "trustIndicator2": {
+      "title": "Full‑Funnel Ad Management",
+      "description": "Strategy • Creatives • Launch • Optimization • Reporting • Budget Scaling"
+    },
+    "items": [
+      {
+        "q": "Which ad platforms do you manage?",
+        "a": "Google (Search/PMAX/YouTube), Meta (Facebook/Instagram), TikTok, Snapchat, LinkedIn, and X (Twitter). We also set up pixels, GA4, and GTM."
+      },
+      {
+        "q": "How do you structure campaigns?",
+        "a": "We build channel‑specific structures: PMAX asset groups by theme, Search by intent, and Paid Social by creative angles. Weekly optimization with clear guardrails."
+      },
+      {
+        "q": "What about tracking and attribution?",
+        "a": "We implement GA4 events, platform pixels, and (optionally) server‑side GTM. We reconcile platform vs GA4 and provide Looker dashboards for ROAS/CAC."
+      },
+      {
+        "q": "How fast can we launch?",
+        "a": "Typical timeline: Audit (3–5 days), Tracking fixes (2–5 days), First launch (7–10 days). We iterate weekly from live data."
+      },
+      {
+        "q": "Do you create ad creatives?",
+        "a": "Yes. We produce UGC and polished variants tailored per platform and test hooks, angles, and formats to reduce CPA and improve ROAS."
+      },
+      {
+        "q": "How do you report performance?",
+        "a": "Weekly summaries with spend, CPA, ROAS, top creatives, learnings, and next actions. Monthly deep dives with attribution and budget recommendations."
+      },
+      {
+        "q": "What budgets do you work with?",
+        "a": "We work with a range—from early tests to $500k+/mo. We scale only when unit economics hold, with caps and kill rules to protect efficiency."
+      }
+    ]
+  }
+  ,
+  "why": {
+    "badge": "The DON VA Difference",
+    "heading": "Why Choose DON VA?",
+    "subtitle": "Not all virtual assistant services are created equal. Here's what sets us apart from the rest.",
+    "items": [
+      {
+        "title": "Elite Talent Pool",
+        "description": "Only 3% of applicants make it through our rigorous vetting process. Every VA is tested for skills, communication, and cultural fit before joining our team."
+      },
+      {
+        "title": "Native German Oversight",
+        "description": "Every deliverable is reviewed by native German-speaking managers who understand your market, culture, and quality standards. No more language barriers or cultural misunderstandings."
+      },
+      {
+        "title": "Lightning-Fast Scaling",
+        "description": "Need to scale from 1 to 10 VAs? We can do it in days, not months. Our bench of pre-vetted talent means you're never waiting for the right person."
+      },
+      {
+        "title": "Zero Risk Guarantee",
+        "description": "14-day money-back guarantee on all starter plans. Plus, if your VA isn't working out, we'll replace them within 24 hours—no questions asked, no extra fees."
+      },
+      {
+        "title": "True Partnership Approach",
+        "description": "We don't just assign VAs and disappear. You get dedicated account management, regular check-ins, and ongoing optimization to ensure maximum ROI."
+      },
+      {
+        "title": "Proven Track Record",
+        "description": "Over 200 businesses scaled their operations with DON VA. Average client satisfaction: 4.9/5. Average cost savings: 68%. These aren't promises—they're proven results."
+      }
+    ]
+  },
+  "integrations": {
+    "badge": "Platform Integrations",
+    "headingPrefix": "Seamless",
+    "headingEmphasis": "Ad & Analytics Integrations",
+    "subtitle": "We connect platforms end‑to‑end—ads, pixels, GA4/GTM, and dashboards—so budgets flow into measurable revenue.",
+    "items": [
+      { "name": "Google Ads", "category": "Ads" },
+      { "name": "Meta Ads", "category": "Ads" },
+      { "name": "TikTok Ads", "category": "Ads" },
+      { "name": "Snapchat Ads", "category": "Ads" },
+      { "name": "LinkedIn Ads", "category": "Ads" },
+      { "name": "X Ads (Twitter)", "category": "Ads" },
+      { "name": "GA4", "category": "Analytics" },
+      { "name": "Google Tag Manager", "category": "Analytics" },
+      { "name": "Looker Studio", "category": "Analytics" },
+      { "name": "Supermetrics", "category": "Analytics" },
+      { "name": "Segment", "category": "CDP" },
+      { "name": "Mixpanel", "category": "Product" },
+      { "name": "Hotjar", "category": "UX" },
+      { "name": "Meta Pixel", "category": "Tracking" },
+      { "name": "LinkedIn Insight Tag", "category": "Tracking" },
+      { "name": "TikTok Pixel", "category": "Tracking" },
+      { "name": "Server‑Side GTM", "category": "Tracking" },
+      { "name": "Shopify/GA", "category": "Ecom" }
+    ],
+    "ctaTitlePrefix": "Using a different system?",
+    "ctaTitleEmphasis": "We adapt.",
+    "ctaDesc": "Share your format or API—CSV, Sheets, CRM, or DB. We'll match your workflow end‑to‑end."
+  }
+}

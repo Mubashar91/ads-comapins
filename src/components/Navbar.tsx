@@ -3,11 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/ThemeProvider";
 import { Menu, X, Sun, Moon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +22,13 @@ export const Navbar = () => {
   const toggleTheme = () => {
     if (theme === "light") setTheme("dark");
     else setTheme("light");
+  };
+
+  const toggleLanguage = () => {
+    const current = i18n.language;
+    const next = current === "en" ? "de" : "en";
+    void i18n.changeLanguage(next);
+    localStorage.setItem("lang", next);
   };
 
   const getThemeIcon = () => {
@@ -43,11 +52,11 @@ export const Navbar = () => {
   };
 
   const navItems = [
-    { name: "Services", href: "#services" },
-    { name: "How It Works", href: "#how-it-works" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "FAQ", href: "#faq" },
+    { name: t("navbar.services"), href: "#services" },
+    { name: t("navbar.howItWorks"), href: "#how-it-works" },
+    { name: t("navbar.pricing"), href: "#pricing" },
+    { name: t("navbar.testimonials"), href: "#testimonials" },
+    { name: t("navbar.faq"), href: "#faq" },
   ];
 
   return (
@@ -70,22 +79,24 @@ export const Navbar = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex items-center space-x-2 sm:space-x-3"
           >
-            <motion.div 
+            <motion.div
               className="w-8 h-8 sm:w-9 sm:h-9 md:w-9 md:h-9 lg:w-10 lg:h-10 bg-gradient-to-br from-[hsl(217,91%,65%)] to-[hsl(220,90%,60%)] rounded-lg flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300"
-              whileHover={{ 
-                scale: 1.1, 
+              whileHover={{
+                scale: 1.1,
                 rotate: 5,
-                boxShadow: "0 10px 25px -5px rgba(167, 139, 250, 0.5)"
+                boxShadow: "0 10px 25px -5px rgba(167, 139, 250, 0.5)",
               }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="text-white font-bold text-base sm:text-lg md:text-lg lg:text-xl">D</span>
+              <span className="text-white font-bold text-base sm:text-lg md:text-lg lg:text-xl">
+                D
+              </span>
             </motion.div>
-            <motion.span 
+            <motion.span
               className="text-lg sm:text-xl md:text-xl lg:text-2xl font-bold bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] bg-clip-text text-transparent hover:opacity-80 transition-opacity duration-300"
               whileHover={{ scale: 1.05 }}
             >
-              AdBoost
+              DON VA
             </motion.span>
           </motion.div>
 
@@ -128,6 +139,21 @@ export const Navbar = () => {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+            >
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={toggleLanguage}
+                className="px-2 md:px-2.5 lg:px-3 py-2 rounded-lg hover:bg-gold/10 hover:text-gold font-semibold"
+                aria-label="Toggle language"
+              >
+                {i18n.language === "en" ? "DE" : "EN"}
+              </Button>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
               <Button
@@ -136,7 +162,21 @@ export const Navbar = () => {
                 onClick={() => window.location.href = '/book-meeting'}
                 className="text-sm md:text-sm lg:text-base px-4 md:px-4 lg:px-7 py-2 md:py-2 lg:py-2.5 cursor-pointer bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] hover:opacity-95 text-white border-0 hover:shadow-lg hover:shadow-[hsl(var(--gold))]/30 transition-all duration-300 hover:scale-105 font-semibold whitespace-nowrap"
               >
-                Book Strategy Call
+                {t("navbar.bookCall")}
+              </Button>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
+            >
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => window.location.href = '/contact'}
+                className="text-sm md:text-sm lg:text-base px-4 md:px-4 lg:px-6 py-2 md:py-2 lg:py-2.5 cursor-pointer hover:bg-gold/10 hover:text-gold transition-all duration-300 font-semibold whitespace-nowrap"
+              >
+                {i18n.language === "en" ? "Contact" : "Kontakt"}
               </Button>
             </motion.div>
           </div>
@@ -158,6 +198,15 @@ export const Navbar = () => {
               <AnimatePresence mode="wait">
                 {getThemeIcon()}
               </AnimatePresence>
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleLanguage}
+              className="px-2 py-2 rounded-lg hover:bg-gold/10 hover:text-gold font-semibold"
+              aria-label="Toggle language"
+            >
+              {i18n.language === "en" ? "DE" : "EN"}
             </Button>
             <Button
               variant="ghost"
@@ -216,7 +265,15 @@ export const Navbar = () => {
                     onClick={() => window.location.href = '/book-meeting'}
                     className="w-full text-base py-3 cursor-pointer font-semibold bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] hover:opacity-95 text-white border-0 hover:shadow-lg transition-all duration-300"
                   >
-                    Book Strategy Call
+                    {t("navbar.bookCall")}
+                  </Button>
+                  <div className="mt-2" />
+                  <Button
+                    variant="ghost"
+                    onClick={() => window.location.href = '/contact'}
+                    className="w-full text-base py-3 cursor-pointer font-semibold hover:bg-gold/10 hover:text-gold transition-all duration-300"
+                  >
+                    {i18n.language === "en" ? "Contact" : "Kontakt"}
                   </Button>
                 </motion.div>
               </div>

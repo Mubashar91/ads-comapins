@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Star, Gift } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 // Constants
 const MAX_VA_COUNT = 10;
@@ -19,66 +20,19 @@ interface PricingPlan {
   badge?: string;
 }
 
-const plans: PricingPlan[] = [
-  {
-    name: "Launch",
-    hours: "Single channel (Google or Meta)",
-    price: 1499,
-    setupFee: 0,
-    features: [
-      "Account audit & strategy (1x)",
-      "Campaign setup (Search/PMAX or Meta)",
-      "Pixel/GA4 event mapping",
-      "2 creatives or variants included",
-      "Weekly optimization & report"
-    ],
-    highlighted: false
-  },
-  {
-    name: "Scale",
-    hours: "Multi‑channel (2–3 platforms)",
-    price: 3499,
-    setupFee: 0,
-    badge: "Most Popular",
-    features: [
-      "Everything in Launch",
-      "PMAX + Paid Social structure",
-      "Creative testing framework",
-      "Server‑side GTM (optional)",
-      "Weekly call + Looker dashboard",
-      "Priority support"
-    ],
-    highlighted: true
-  },
-  {
-    name: "Enterprise",
-    hours: "Full‑funnel (4+ platforms)",
-    price: 4999,
-    setupFee: 0,
-    badge: "Best Value",
-    features: [
-      "Everything in Scale",
-      "ABM + LinkedIn + X (B2B)",
-      "Lift studies & holdout tests",
-      "Landing page CRO support",
-      "Dedicated strategist",
-      "Custom SLAs & integrations"
-    ],
-    highlighted: false
-  }
-];
-
 export const Pricing = () => {
   const [vaCount, setVaCount] = useState(1);
-  
+  const { t } = useTranslation();
+  const plans = (t("pricing.plans", { returnObjects: true }) as PricingPlan[]);
+
   const calculateDiscount = (count: number) => {
     return count >= BULK_DISCOUNT_THRESHOLD ? BULK_DISCOUNT_RATE : 0;
   };
-  
+
   const discount = calculateDiscount(vaCount);
   const totalPrice = plans.reduce((sum, plan) => sum + plan.price, 0) * vaCount;
   const savings = discount > 0 ? Math.round(totalPrice * discount) : 0;
-  
+
   // Calculate average price per VA per hour
   const avgHoursPerWeek = 20; // Professional plan baseline
   const avgPricePerVA = plans[1].price; // Professional plan price
@@ -108,16 +62,16 @@ export const Pricing = () => {
             whileHover={{ scale: 1.05 }}
           >
             <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-50"></span>
-            <span className="relative z-10">Transparent Pricing</span>
+            <span className="relative z-10">{t("pricing.badge")}</span>
           </motion.span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 text-[hsl(222,47%,20%)] dark:text-white leading-tight tracking-tight">
-            Ad Campaign <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] bg-clip-text text-transparent bg-[length:200%_100%]">Packages</span>
+            {t("pricing.headingPrefix")} <span className="relative inline-block">
+              <span className="bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] bg-clip-text text-transparent bg-[length:200%_100%]">{t("pricing.headingEmphasis")}</span>
               <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[hsl(var(--gold))]/40 to-transparent"></span>
             </span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-            Choose a plan that fits your channels and goals. Scale budgets only when unit economics hold. No hidden fees.
+            {t("pricing.intro")}
           </p>
         </motion.div>
 
@@ -146,10 +100,10 @@ export const Pricing = () => {
                   </motion.div>
                   <div>
                     <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[hsl(222,47%,20%)] dark:text-white mb-2">
-                      One Week Free Trial
+                      {t("pricing.trialTitle")}
                     </h3>
                     <p className="text-sm sm:text-base text-muted-foreground">
-                      New customers get <span className="font-bold text-[hsl(217,91%,60%)] dark:text-[hsl(217,91%,75%)]">7 days free</span> on any plan. No credit card required.
+                      {t("pricing.freeBanner")}
                     </p>
                   </div>
                 </div>
@@ -158,7 +112,7 @@ export const Pricing = () => {
                   className="flex-shrink-0 bg-gradient-to-r from-[hsl(217,91%,60%)] to-[hsl(187,92%,47%)] text-white hover:opacity-90 transition-all duration-300 hover:scale-105 font-semibold shadow-lg px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base border-0"
                   onClick={() => window.location.href = '/book-meeting'}
                 >
-                  Start Free Trial
+                  {t("pricing.startTrial")}
                 </Button>
               </div>
             </div>
@@ -240,7 +194,7 @@ export const Pricing = () => {
                       {plan.hours}
                     </p>
                     <span className="px-2 py-0.5 text-xs rounded-full bg-card dark:bg-[hsl(250,45%,20%)]/50 text-[hsl(222,47%,20%)] dark:text-white">
-                      Ad Campaigns
+                      {t("pricing.tagLabel")}
                     </span>
                   </div>
                 </div>
@@ -257,17 +211,17 @@ export const Pricing = () => {
                       ${plan.price}
                     </motion.span>
                     <span className="text-base ml-1 text-[hsl(var(--gold))] dark:text-[hsl(var(--gold))]">
-                      /mo
+                      {t("pricing.perMonth")}
                     </span>
                   </div>
                   {plan.setupFee > 0 ? (
                     <p className="text-xs mt-2 text-[hsl(var(--gold))] dark:text-[hsl(var(--gold))]">
-                      + ${plan.setupFee} setup fee
+                      {t("pricing.setupFeeWithAmount", { amount: `$${plan.setupFee}` })}
                     </p>
                   ) : (
                     <p className="text-xs mt-2 font-semibold flex items-center gap-1 text-[hsl(222,47%,20%)] dark:text-white">
                       <Check className="w-3.5 h-3.5 text-[hsl(222,47%,20%)] dark:text-white" />
-                      No setup fee
+                      {t("pricing.noSetupFee")}
                     </p>
                   )}
                 </div>
@@ -301,7 +255,7 @@ export const Pricing = () => {
                 >
                   {/* Button shine effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-700" aria-hidden="true" />
-                  <span className="relative">Start Free Audit</span>
+                  <span className="relative">{t("pricing.startAudit")}</span>
                 </Button>
               </div>
             </motion.div>
@@ -309,13 +263,13 @@ export const Pricing = () => {
         </div>
 
         <motion.p 
-    className="text-center text-muted-foreground mt-10 sm:mt-12 md:mt-16 lg:mt-20 max-w-3xl mx-auto leading-relaxed text-sm sm:text-base px-4"
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6, delay: 0.5 }}
-  >
-    All plans are billed monthly with no long-term contracts. Upgrade or downgrade anytime. Typical turnaround 24–72h depending on volume.
+          className="text-center text-muted-foreground mt-10 sm:mt-12 md:mt-16 lg:mt-20 max-w-3xl mx-auto leading-relaxed text-sm sm:text-base px-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          {t("pricing.disclaimer")}
         </motion.p>
       </div>
     </motion.section>
