@@ -171,12 +171,12 @@ export const Navbar = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
             >
               <Button
-                variant="gold"
+                variant="ghost"
                 size="sm"
-                onClick={() => window.location.href = '/book-meeting'}
-                className="text-sm md:text-sm lg:text-base px-4 md:px-4 lg:px-7 py-2 md:py-2 lg:py-2.5 cursor-pointer bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] hover:opacity-95 text-white border-0 hover:shadow-lg hover:shadow-[hsl(var(--gold))]/30 transition-all duration-300 hover:scale-105 font-semibold whitespace-nowrap"
+                onClick={() => window.location.href = '/contact'}
+                className="text-sm md:text-sm lg:text-base px-4 md:px-4 lg:px-6 py-2 md:py-2 lg:py-2.5 cursor-pointer hover:bg-gold/10 hover:text-gold transition-all duration-300 font-semibold whitespace-nowrap"
               >
-                {t("navbar.bookCall")}
+                {i18n.language === "en" ? "Contact" : "Kontakt"}
               </Button>
             </motion.div>
             <motion.div
@@ -185,12 +185,12 @@ export const Navbar = () => {
               transition={{ duration: 0.6, delay: 0.55 }}
             >
               <Button
-                variant="ghost"
+                variant="gold"
                 size="sm"
-                onClick={() => window.location.href = '/contact'}
-                className="text-sm md:text-sm lg:text-base px-4 md:px-4 lg:px-6 py-2 md:py-2 lg:py-2.5 cursor-pointer hover:bg-gold/10 hover:text-gold transition-all duration-300 font-semibold whitespace-nowrap"
+                onClick={() => window.location.href = '/book-meeting'}
+                className="text-sm md:text-sm lg:text-base px-4 md:px-4 lg:px-7 py-2 md:py-2 lg:py-2.5 cursor-pointer bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] hover:opacity-95 text-white border-0 hover:shadow-lg hover:shadow-[hsl(var(--gold))]/30 transition-all duration-300 hover:scale-105 font-semibold whitespace-nowrap"
               >
-                {i18n.language === "en" ? "Contact" : "Kontakt"}
+                {t("navbar.bookCall")}
               </Button>
             </motion.div>
           </div>
@@ -275,19 +275,19 @@ export const Navbar = () => {
                   className="pt-3 px-3 border-t border-border/50"
                 >
                   <Button
-                    variant="gold"
-                    onClick={() => window.location.href = '/book-meeting'}
-                    className="w-full text-base py-3 cursor-pointer font-semibold bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] hover:opacity-95 text-white border-0 hover:shadow-lg transition-all duration-300"
-                  >
-                    {t("navbar.bookCall")}
-                  </Button>
-                  <div className="mt-2" />
-                  <Button
                     variant="ghost"
                     onClick={() => window.location.href = '/contact'}
                     className="w-full text-base py-3 cursor-pointer font-semibold hover:bg-gold/10 hover:text-gold transition-all duration-300"
                   >
                     {i18n.language === "en" ? "Contact" : "Kontakt"}
+                  </Button>
+                  <div className="mt-2" />
+                  <Button
+                    variant="gold"
+                    onClick={() => window.location.href = '/book-meeting'}
+                    className="w-full text-base py-3 cursor-pointer font-semibold bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] hover:opacity-95 text-white border-0 hover:shadow-lg transition-all duration-300"
+                  >
+                    {t("navbar.bookCall")}
                   </Button>
                 </motion.div>
               </div>

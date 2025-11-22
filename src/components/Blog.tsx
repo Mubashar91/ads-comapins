@@ -208,6 +208,23 @@ export const Blog = () => {
                     alt={post.title}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    data-category={post.category}
+                    onError={(e) => {
+                      const target = e.currentTarget as HTMLImageElement;
+                      if (target.dataset.fallback !== '1') {
+                        target.dataset.fallback = '1';
+                        const cat = (target.dataset.category || '').toLowerCase();
+                        let placeholder = 'https://images.unsplash.com/photo-1495020689067-958852a7765e?w=1200&auto=format&fit=crop&q=80';
+                        if (cat.includes('tiktok')) {
+                          placeholder = 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?w=1200&auto=format&fit=crop&q=80';
+                        } else if (cat.includes('snap')) {
+                          placeholder = 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=1200&auto=format&fit=crop&q=80';
+                        } else if (cat.includes('comparison') || cat.includes('playbook')) {
+                          placeholder = 'https://images.unsplash.com/photo-1522199710521-72d69614c702?w=1200&auto=format&fit=crop&q=80';
+                        }
+                        target.src = placeholder;
+                      }
+                    }}
                   />
                   {/* Subtle image gradient for legibility */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />

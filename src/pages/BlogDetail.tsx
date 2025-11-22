@@ -91,6 +91,13 @@ const BlogDetail = () => {
                 src={post.image}
                 alt={post.title}
                 className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover group-hover:scale-105 transition-transform duration-500"
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement;
+                  if (target.dataset.fallback !== '1') {
+                    target.dataset.fallback = '1';
+                    target.src = 'https://images.unsplash.com/photo-1495020689067-958852a7765e?w=1200&auto=format&fit=crop&q=80';
+                  }
+                }}
               />
             </motion.div>
 
