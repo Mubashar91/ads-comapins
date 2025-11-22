@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/ThemeProvider";
 import { Menu, X, Sun, Moon } from "lucide-react";
@@ -10,6 +11,8 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
   const { t, i18n } = useTranslation();
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 20, mass: 0.4 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,6 +73,17 @@ export const Navbar = () => {
           : "bg-background/90 backdrop-blur-md"
       }`}
     >
+      {/* Scroll progress bar */}
+      <motion.div
+        className="pointer-events-none absolute top-0 left-0 right-0 h-[3px]"
+        style={{ scaleX: progress, transformOrigin: "0% 50%" }}
+      >
+        <div className="animated-border h-full w-full" />
+      </motion.div>
+      {/* Animated gradient underline */}
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[2px] opacity-70">
+        <div className="animated-border h-full w-full" />
+      </div>
       <div className="container mx-auto px-4 sm:px-6 md:px-6 lg:px-10 xl:px-12">
         <div className="flex items-center justify-between h-16 sm:h-18 md:h-[72px] lg:h-20">
           {/* Logo */}
