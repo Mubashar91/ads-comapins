@@ -136,7 +136,7 @@ const BlogDetail = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="prose prose-sm sm:prose-base lg:prose-lg prose-headings:text-foreground prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:font-bold prose-h2:mb-4 prose-h2:mt-8 prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:font-bold prose-h3:mb-3 prose-h3:mt-6 prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground prose-ul:text-muted-foreground prose-li:text-muted-foreground prose-li:my-1 max-w-none mb-10 sm:mb-12"
+              className="prose prose-base sm:prose-lg lg:prose-xl prose-h2:text-3xl sm:prose-h2:text-4xl prose-h2:font-bold prose-h2:mb-5 prose-h2:mt-10 prose-h2:!text-[hsl(var(--brand-blue))] prose-h3:text-2xl sm:prose-h3:text-3xl prose-h3:font-bold prose-h3:mb-4 prose-h3:mt-8 prose-h3:!text-[hsl(var(--brand-blue))] prose-h4:text-xl sm:prose-h4:text-2xl prose-h4:font-semibold prose-h4:mb-3 prose-h4:mt-6 prose-h4:!text-[hsl(var(--brand-blue))] prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground prose-ul:text-muted-foreground prose-li:text-muted-foreground prose-li:my-1 max-w-none mb-12 sm:mb-14"
             >
               <div dangerouslySetInnerHTML={{ __html: post.content }} />
             </motion.div>
