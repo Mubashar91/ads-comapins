@@ -6,13 +6,58 @@ import {
 } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
 import { HelpCircle, Shield, Zap } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+type FAQItem = {
+  _id?: string;
+  order?: number;
+  question: string;
+  answer: string;
+};
+
 export const FAQ = () => {
-  const { t } = useTranslation();
-  const faqs = (t("faq.items", { returnObjects: true }) as Array<{ q: string; a: string }>);
+  const { t, i18n } = useTranslation();
+  const [faqs, setFaqs] = useState<FAQItem[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const fetchFaqs = async () => {
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE || "").replace(/\/$/, "");
+        const database = import.meta.env.VITE_DATABASE || "callcenter";
+        const url = `${apiBase}/api/faq?lang=${i18n.language}`;
+
+        const response = await fetch(url, {
+          headers: {
+            "X-Tenant-ID": database,
+          },
+        });
+
+        if (!response.ok) {
+          console.error("Failed to fetch FAQ data - Status:", response.status);
+          if (!cancelled) setFaqs([]);
+          return;
+        }
+
+        const data = await response.json();
+        if (!cancelled) setFaqs(Array.isArray(data.faqs) ? data.faqs : []);
+      } catch (error) {
+        console.error("Failed to fetch FAQ data:", error);
+        if (!cancelled) setFaqs([]);
+      }
+    };
+
+    fetchFaqs();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [i18n.language]);
+
   return (
-    <motion.section 
+    <motion.section
       id="faq"
       className="relative py-8 sm:py-10 md:py-12 lg:py-14 bg-gradient-to-b from-background via-muted/30 to-background z-80 overflow-hidden"
       initial={{ opacity: 0, y: 200 }}
@@ -23,10 +68,10 @@ export const FAQ = () => {
       {/* Background decorative elements */}
       <div className="absolute top-20 right-10 w-64 h-64 bg-gold/5 rounded-full blur-[100px]" />
       <div className="absolute bottom-20 left-10 w-64 h-64 bg-gold/5 rounded-full blur-[100px]" />
-      
+
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <motion.div 
+          <motion.div
             className="mb-10 sm:mb-12 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -34,7 +79,7 @@ export const FAQ = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             {/* Badge - Centered */}
-            <motion.div 
+            <motion.div
               className="flex justify-center mb-5 sm:mb-6"
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
@@ -66,14 +111,14 @@ export const FAQ = () => {
             <Accordion type="single" collapsible className="space-y-3 sm:space-y-4">
               {faqs.map((faq, index) => (
                 <motion.div
-                  key={index}
+                  key={faq._id || index}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                 >
-                  <AccordionItem 
-                    value={`item-${index}`}
+                  <AccordionItem
+                    value={faq._id || `item-${index}`}
                     className="group bg-card/60 backdrop-blur-sm border border-[hsl(215,32%,91%)] dark:border-border/40 rounded-xl sm:rounded-2xl px-4 sm:px-6 md:px-8 hover:border-[hsl(var(--gold))]/60 dark:hover:border-[hsl(var(--gold))]/60 hover:shadow-[0_10px_30px_-5px_hsl(217_91%_60%/0.2)] dark:hover:shadow-[0_10px_30px_-5px_rgba(59,130,246,0.15)] transition-all duration-300 data-[state=open]:border-[hsl(var(--gold))]/70 dark:data-[state=open]:border-[hsl(var(--gold))]/70 data-[state=open]:shadow-[0_15px_40px_-5px_hsl(217_91%_60%/0.25),0_0_20px_hsl(217_91%_60%/0.1)] dark:data-[state=open]:shadow-[0_15px_40px_-5px_rgba(59,130,246,0.2),0_0_20px_rgba(59,130,246,0.08)]"
                   >
                     <AccordionTrigger className="text-left text-base sm:text-lg md:text-xl font-semibold text-[hsl(var(--gold))] dark:text-[hsl(var(--gold))] py-5 sm:py-6 hover:no-underline group-hover:text-[hsl(var(--gold))] dark:group-hover:text-[hsl(var(--gold))] transition-colors">
@@ -81,11 +126,11 @@ export const FAQ = () => {
                         <span className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[hsl(var(--gold))] dark:bg-[hsl(var(--gold))] flex items-center justify-center text-white text-sm font-bold mt-0.5">
                           {index + 1}
                         </span>
-                        <span className="flex-1">{faq.q}</span>
+                        <span className="flex-1">{faq.question}</span>
                       </span>
                     </AccordionTrigger>
                     <AccordionContent className="text-sm sm:text-base text-card-foreground dark:text-card-foreground/85 leading-relaxed pt-2 pb-5 sm:pb-6 pl-9 sm:pl-10">
-                      {faq.a}
+                      {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
                 </motion.div>
@@ -94,7 +139,7 @@ export const FAQ = () => {
           </motion.div>
 
           {/* Enhanced trust indicators */}
-          <motion.div 
+          <motion.div
             className="mt-10 sm:mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

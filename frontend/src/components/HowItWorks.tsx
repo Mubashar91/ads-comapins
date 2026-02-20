@@ -1,13 +1,160 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { Search, Settings, Rocket, TrendingUp } from "lucide-react";
+import { Search, Settings, Rocket, TrendingUp, Calendar, Target, Zap, Award, LucideIcon } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-const iconMap = [Search, Settings, Rocket, TrendingUp];
+// Icon mapping for different icon names
+const iconMap: Record<string, LucideIcon> = {
+  Search,
+  Settings,
+  Rocket,
+  TrendingUp,
+  Calendar,
+  Target,
+  Zap,
+  Award
+};
+
+interface HowItWorksStep {
+  stepNumber: number;
+  title: string;
+  description: string;
+  icon: string;
+  stepLabel: string;
+}
 
 export const HowItWorks = () => {
   const prefersReducedMotion = useReducedMotion();
-  const { t } = useTranslation();
-  const steps = (t("how.steps", { returnObjects: true }) as Array<{ step: string; title: string; description: string }>);
+  const { i18n } = useTranslation();
+  const [isMounted, setIsMounted] = useState(false);
+  const [steps, setSteps] = useState<HowItWorksStep[]>([]);
+  const [sectionData, setSectionData] = useState({
+    badge: "",
+    headingPrefix: "",
+    headingEmphasis: "",
+    subtitle: "",
+    cta: ""
+  });
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const fetchHowItWorksData = async () => {
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
+        const database = import.meta.env.VITE_DATABASE || 'callcenter';
+        const url = `${apiBase}/api/how-it-works?lang=${i18n.language}`;
+        
+        const response = await fetch(url, {
+          headers: {
+            'X-Tenant-ID': database
+          }
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          setSteps(data.steps);
+          setSectionData(data.sectionData || {
+            badge: "Our Process",
+            headingPrefix: "How We",
+            headingEmphasis: "Drive Results",
+            subtitle: "Our proven 4-step process ensures maximum ROI for your advertising campaigns",
+            cta: "Start Your Campaign"
+          });
+        } else {
+          // Fallback data
+          setSteps([
+            {
+              stepNumber: 1,
+              title: "Strategy & Analysis",
+              description: "We analyze your business, target audience, and competitors to create a winning strategy.",
+              icon: "Search",
+              stepLabel: "Step 1"
+            },
+            {
+              stepNumber: 2,
+              title: "Campaign Setup",
+              description: "We create and optimize your ad campaigns across multiple platforms for maximum reach.",
+              icon: "Settings",
+              stepLabel: "Step 2"
+            },
+            {
+              stepNumber: 3,
+              title: "Launch & Monitor",
+              description: "We launch your campaigns and continuously monitor performance for optimal results.",
+              icon: "Rocket",
+              stepLabel: "Step 3"
+            },
+            {
+              stepNumber: 4,
+              title: "Optimize & Scale",
+              description: "We analyze data and optimize campaigns to increase conversions and scale your success.",
+              icon: "TrendingUp",
+              stepLabel: "Step 4"
+            }
+          ]);
+          setSectionData({
+            badge: "Our Process",
+            headingPrefix: "How We",
+            headingEmphasis: "Drive Results",
+            subtitle: "Our proven 4-step process ensures maximum ROI for your advertising campaigns",
+            cta: "Start Your Campaign"
+          });
+        }
+      } catch (error) {
+        console.error('Failed to fetch how it works data:', error);
+        // Fallback data on error
+        setSteps([
+          {
+            stepNumber: 1,
+            title: "Strategy & Analysis",
+            description: "We analyze your business, target audience, and competitors to create a winning strategy.",
+            icon: "Search",
+            stepLabel: "Step 1"
+          },
+          {
+            stepNumber: 2,
+            title: "Campaign Setup",
+            description: "We create and optimize your ad campaigns across multiple platforms for maximum reach.",
+            icon: "Settings",
+            stepLabel: "Step 2"
+          },
+          {
+            stepNumber: 3,
+            title: "Launch & Monitor",
+            description: "We launch your campaigns and continuously monitor performance for optimal results.",
+            icon: "Rocket",
+            stepLabel: "Step 3"
+          },
+          {
+            stepNumber: 4,
+            title: "Optimize & Scale",
+            description: "We analyze data and optimize campaigns to increase conversions and scale your success.",
+            icon: "TrendingUp",
+            stepLabel: "Step 4"
+          }
+        ]);
+        setSectionData({
+          badge: "Our Process",
+          headingPrefix: "How We",
+          headingEmphasis: "Drive Results",
+          subtitle: "Our proven 4-step process ensures maximum ROI for your advertising campaigns",
+          cta: "Start Your Campaign"
+        });
+      }
+    };
+
+    if (isMounted) {
+      fetchHowItWorksData();
+    }
+  }, [i18n.language, isMounted]);
+
+  if (!isMounted || steps.length === 0) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
+
   return (
     <motion.section 
       id="how-it-works"
@@ -30,16 +177,16 @@ export const HowItWorks = () => {
             whileHover={{ scale: 1.05 }}
           >
             <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-50"></span>
-            <span className="relative z-10">{t("how.badge")}</span>
+            <span className="relative z-10">{sectionData.badge}</span>
           </motion.span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-[hsl(222,47%,20%)] dark:text-white leading-tight tracking-tight">
-            {t("how.headingPrefix")} <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] bg-clip-text text-transparent bg-[length:200%_100%]">{t("how.headingEmphasis")}</span>
+            {sectionData.headingPrefix} <span className="relative inline-block">
+              <span className="bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] bg-clip-text text-transparent bg-[length:200%_100%]">{sectionData.headingEmphasis}</span>
               <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[hsl(var(--gold))]/40 to-transparent"></span>
             </span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
-            {t("how.subtitle")}
+            {sectionData.subtitle}
           </p>
         </motion.div>
 
@@ -60,9 +207,9 @@ export const HowItWorks = () => {
                   transition={{ duration: 0.45, ease: "easeInOut" }}
                 >
                   <div className="absolute inset-0 rounded-full bg-[hsl(var(--gold))]/20 blur-md group-hover:blur-lg transition-all duration-500" />
-                  {iconMap[index] ? (
+                  {iconMap[step.icon] ? (
                     <span className="relative z-10">
-                      {(() => { const Icon = iconMap[index]!; return <Icon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white" />; })()}
+                      {(() => { const Icon = iconMap[step.icon]!; return <Icon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white" />; })()}
                     </span>
                   ) : null}
                   <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-7 h-7 sm:w-8 sm:h-8 bg-[hsl(250,100%,98%)] dark:bg-[hsl(250,45%,20%)] text-[hsl(var(--gold))] dark:text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-bold border-2 border-[hsl(var(--gold))] dark:border-[hsl(var(--gold))]">
@@ -89,7 +236,7 @@ export const HowItWorks = () => {
                 >
                   <div className="pointer-events-none absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[hsl(var(--gold))]/10 dark:from-[hsl(var(--gold))]/20 via-[hsl(250,100%,98%)]/10 dark:via-[hsl(250,45%,20%)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <p className="text-[hsl(var(--gold))] dark:text-[hsl(var(--gold))] font-semibold text-sm uppercase tracking-wider mb-3 inline-block px-3 py-1 bg-card dark:bg-[hsl(250,45%,20%)]/50 rounded-full">
-                    {step.step}
+                    {step.stepLabel}
                   </p>
                   <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-[hsl(222,47%,20%)] dark:text-white transition-colors duration-300">
                     {step.title}
@@ -102,16 +249,6 @@ export const HowItWorks = () => {
                   <div className={`absolute ${index % 2 === 1 ? 'top-0 left-0 border-t-2 border-l-2 rounded-tl-xl sm:rounded-tl-2xl' : 'bottom-0 right-0 border-b-2 border-r-2 rounded-br-xl sm:rounded-br-2xl'} w-12 h-12 sm:w-16 sm:h-16 border-[hsl(var(--gold))]/0 group-hover:border-[hsl(var(--gold))]/50 transition-all duration-500`} />
                 </motion.div>
               </div>
-              
-              {index < steps.length - 1 && (
-                <motion.div 
-                  className="absolute left-16 top-32 w-0.5 h-16 bg-gradient-to-b from-[hsl(222,47%,20%)] via-[hsl(222,35%,25%)] to-[hsl(222,30%,30%)] hidden md:block"
-                  initial={{ scaleY: 0 }}
-                  whileInView={{ scaleY: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: prefersReducedMotion ? 0.3 : 0.5, delay: index * 0.15 + 0.3 }}
-                />
-              )}
             </motion.div>
           ))}
           <motion.div 
@@ -122,7 +259,7 @@ export const HowItWorks = () => {
             transition={{ duration: prefersReducedMotion ? 0.3 : 0.5 }}
           >
             <a href="#contact" className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] text-white hover:opacity-95 hover:scale-105 transition-all duration-300 font-semibold shadow-lg">
-              {t("how.cta")}
+              {sectionData.cta}
             </a>
           </motion.div>
         </div>

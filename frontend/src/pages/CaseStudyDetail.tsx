@@ -1,16 +1,116 @@
-import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle2, TrendingUp, Quote } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Quote } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
-import { caseStudies } from "@/components/CaseStudies";
 import { useTranslation } from "react-i18next";
+
+interface CaseStudy {
+  caseStudyId: number;
+  title: string;
+  company: string;
+  industry: string;
+  challenge: string;
+  solution: string;
+  results: {
+    metric: string;
+    value: string;
+    description: string;
+  }[];
+  testimonial: string;
+  testimonialAuthor: string;
+  testimonialRole: string;
+  image: string;
+  stats: {
+    mainResult: string;
+    timeframe: string;
+    seoFocus: string;
+  };
+}
 
 const CaseStudyDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { t } = useTranslation();
-  
-  const caseStudy = caseStudies.find(cs => cs.id === Number(id));
+  const { t, i18n } = useTranslation();
+
+  const caseStudyId = useMemo(() => Number(id), [id]);
+  const [caseStudy, setCaseStudy] = useState<CaseStudy | null>(null);
+  const [relatedCaseStudies, setRelatedCaseStudies] = useState<CaseStudy[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const apiBase = (import.meta.env.VITE_API_BASE || "").replace(/\/$/, "");
+    const database = import.meta.env.VITE_DATABASE || "callcenter";
+
+    const fetchCaseStudy = async () => {
+      if (!Number.isFinite(caseStudyId)) {
+        if (!cancelled) {
+          setCaseStudy(null);
+          setRelatedCaseStudies([]);
+          setIsLoading(false);
+        }
+        return;
+      }
+
+      try {
+        setIsLoading(true);
+
+        const detailUrl = `${apiBase}/api/case-studies/${caseStudyId}?lang=${i18n.language}`;
+        const listUrl = `${apiBase}/api/case-studies?lang=${i18n.language}`;
+
+        const [detailResponse, listResponse] = await Promise.all([
+          fetch(detailUrl, {
+            headers: {
+              "X-Tenant-ID": database
+            }
+          }),
+          fetch(listUrl, {
+            headers: {
+              "X-Tenant-ID": database
+            }
+          })
+        ]);
+
+        if (!detailResponse.ok) {
+          if (!cancelled) setCaseStudy(null);
+        } else {
+          const detailData = await detailResponse.json();
+          if (!cancelled) setCaseStudy(detailData.caseStudy || null);
+        }
+
+        if (listResponse.ok) {
+          const listData = await listResponse.json();
+          const listItems: CaseStudy[] = listData.caseStudies || [];
+          const related = listItems.filter(cs => cs.caseStudyId !== caseStudyId).slice(0, 2);
+          if (!cancelled) setRelatedCaseStudies(related);
+        } else {
+          if (!cancelled) setRelatedCaseStudies([]);
+        }
+      } catch (_error) {
+        if (!cancelled) {
+          setCaseStudy(null);
+          setRelatedCaseStudies([]);
+        }
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
+    };
+
+    fetchCaseStudy();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [caseStudyId, i18n.language]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">Loading...</div>
+      </div>
+    );
+  }
 
   if (!caseStudy) {
     return (
@@ -208,10 +308,10 @@ const CaseStudyDetail = () => {
             <div className="mt-12 pt-10 border-t border-border">
               <h3 className="text-xl sm:text-2xl font-bold mb-6 text-foreground">{t("caseStudy.moreSuccess")}</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {caseStudies.filter(cs => cs.id !== caseStudy.id).slice(0, 2).map((relatedStudy) => (
+                {relatedCaseStudies.map((relatedStudy) => (
                   <div
-                    key={relatedStudy.id}
-                    onClick={() => navigate(`/case-study/${relatedStudy.id}`)}
+                    key={relatedStudy.caseStudyId}
+                    onClick={() => navigate(`/case-study/${relatedStudy.caseStudyId}`)}
                     className="group cursor-pointer bg-card border border-border rounded-lg overflow-hidden hover:border-gold/50 hover:shadow-md transition-all duration-300"
                   >
                     <img

@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
-import { TrendingUp, Users, Clock, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 interface CaseStudy {
-  id: number;
+  caseStudyId: number;
   title: string;
   company: string;
   industry: string;
@@ -26,72 +27,46 @@ interface CaseStudy {
   };
 }
 
-const caseStudies: CaseStudy[] = [
-  {
-    id: 1,
-    title: "Scaling DTC with PMAX + UGC on Meta",
-    company: "Luxe Beauty Co.",
-    industry: "DTC Beauty",
-    challenge: "Rising CPAs on Meta and stagnating Google Search. Needed fresh creative and broader reach without tanking ROAS.",
-    solution: "UGC creative testing on Meta (hooks/angles) + PMAX asset groups by theme. Weekly optimization with budget guardrails and GA4 validation.",
-    results: [
-      { metric: "ROAS", value: "3.4x", description: "Blended across Meta/Google" },
-      { metric: "CPA", value: "-29%", description: "Cost per purchase" },
-      { metric: "Spend", value: "+65%", description: "Scaled budget profitably" },
-      { metric: "Time", value: "8 wks", description: "From audit to scale" }
-    ],
-    testimonial: "The weekly cadence and creative testing unlocked scale without sacrificing ROAS.",
-    testimonialAuthor: "Emma Rodriguez",
-    testimonialRole: "Founder, Luxe Beauty Co.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop",
-    stats: { mainResult: "3.4x ROAS", timeframe: "8 weeks", seoFocus: "Meta + PMAX" }
-  },
-  {
-    id: 2,
-    title: "B2B Pipeline: LinkedIn + Search Capture",
-    company: "Peak Performance",
-    industry: "B2B Services",
-    challenge: "Expensive leads on LinkedIn and poor MQL quality from forms. Needed pipeline growth at lower blended CAC.",
-    solution: "ABM audience layers on LinkedIn with thought‑leadership + high‑intent Google Search. CRO tweaks and attribution clean‑up in GA4/GTM.",
-    results: [
-      { metric: "CAC", value: "-32%", description: "Blended across channels" },
-      { metric: "SQLs", value: "+58%", description: "Sales‑qualified leads" },
-      { metric: "Conv.", value: "+41%", description: "Lead to opp" },
-      { metric: "Time", value: "6 wks", description: "From launch to impact" }
-    ],
-    testimonial: "Quality leads finally. The ABM + Search combo changed our pipeline overnight.",
-    testimonialAuthor: "David Chen",
-    testimonialRole: "CEO, Peak Performance",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop",
-    stats: { mainResult: "-32% CAC", timeframe: "6 weeks", seoFocus: "LinkedIn + Search" }
-  },
-  {
-    id: 3,
-    title: "Unlocking Incremental Lift with TikTok + Snapchat",
-    company: "CloudFlow",
-    industry: "SaaS",
-    challenge: "Search was tapped out; needed incremental volume. Unsure how to measure lift across new social channels.",
-    solution: "TikTok + Snapchat creatives with weekly iterations, event mapping, and platform/GA4 lift studies. Budget rules and holdout tests.",
-    results: [
-      { metric: "Lift", value: "+22%", description: "Incremental signups" },
-      { metric: "CPA", value: "-18%", description: "After optimization" },
-      { metric: "Output", value: "3x", description: "Creative iterations" },
-      { metric: "Time", value: "5 wks", description: "From test to scale" }
-    ],
-    testimonial: "We found real incremental volume instead of cannibalizing Search.",
-    testimonialAuthor: "Marco Schneider",
-    testimonialRole: "VP Marketing, CloudFlow",
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop",
-    stats: { mainResult: "+22% Lift", timeframe: "5 weeks", seoFocus: "TikTok + Snapchat" }
-  }
-];
-
-export { caseStudies };
-
 export const CaseStudies = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation();
-  const items = (t("caseStudiesList.items", { returnObjects: true }) as CaseStudy[]) || caseStudies;
+  const { t, i18n } = useTranslation();
+  const [items, setItems] = useState<CaseStudy[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const fetchCaseStudiesData = async () => {
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
+        const database = import.meta.env.VITE_DATABASE || 'callcenter';
+        const url = `${apiBase}/api/case-studies?lang=${i18n.language}`;
+
+        const response = await fetch(url, {
+          headers: {
+            'X-Tenant-ID': database
+          }
+        });
+
+        if (!response.ok) {
+          console.error('Failed to fetch case studies data - Status:', response.status);
+          if (!cancelled) setItems([]);
+          return;
+        }
+
+        const data = await response.json();
+        if (!cancelled) setItems(data.caseStudies || []);
+      } catch (error) {
+        console.error('Failed to fetch case studies data:', error);
+        if (!cancelled) setItems([]);
+      }
+    };
+
+    fetchCaseStudiesData();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [i18n.language]);
 
   return (
     <motion.section
@@ -126,7 +101,7 @@ export const CaseStudies = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto">
           {items.map((study, index) => (
             <motion.article
-              key={study.id}
+              key={study.caseStudyId}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -139,7 +114,7 @@ export const CaseStudies = () => {
                 damping: 20
               }}
               className="group relative bg-card/80 backdrop-blur-sm border border-[hsl(215,32%,91%)] dark:border-border/40 rounded-2xl overflow-hidden hover:border-[hsl(var(--gold))]/60 dark:hover:border-[hsl(var(--gold))]/60 hover:shadow-[0_25px_70px_-15px_hsl(217_91%_60%/0.35),0_0_35px_hsl(217_91%_60%/0.15)] dark:hover:shadow-[0_25px_70px_-15px_rgba(59,130,246,0.3),0_0_35px_rgba(59,130,246,0.1)] transition-all duration-300 cursor-pointer w-full hover:-translate-y-1"
-              onClick={() => navigate(`/case-study/${study.id}`)}
+              onClick={() => navigate(`/case-study/${study.caseStudyId}`)}
               whileHover={{ 
                 y: -6, 
                 scale: 1.01,

@@ -143,56 +143,7 @@
     "ctaPrompt": "Ready to write your own success story?",
     "ctaPrimaryDesktop": "Book Your Free Consultation →",
     "ctaPrimaryMobile": "Get Started →",
-    "items": [
-      {
-        "id": 1,
-        "title": "Scaling DTC with PMAX + UGC on Meta",
-        "company": "Luxe Beauty Co.",
-        "industry": "DTC Beauty",
-        "challenge": "Rising CPAs on Meta and stagnating Google Search. Needed fresh creative and broader reach without tanking ROAS.",
-        "solution": "UGC creative testing on Meta (hooks/angles) + PMAX asset groups by theme. Weekly optimization with budget guardrails and GA4 validation.",
-        "results": [
-          { "metric": "ROAS", "value": "3.4x", "description": "Blended across Meta/Google" }
-        ],
-        "testimonial": "The weekly cadence and creative testing unlocked scale without sacrificing ROAS.",
-        "testimonialAuthor": "Emma Rodriguez",
-        "testimonialRole": "Founder, Luxe Beauty Co.",
-        "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop",
-        "stats": { "mainResult": "3.4x ROAS", "timeframe": "8 weeks", "seoFocus": "Meta + PMAX" }
-      },
-      {
-        "id": 2,
-        "title": "B2B Pipeline: LinkedIn + Search Capture",
-        "company": "Peak Performance",
-        "industry": "B2B Services",
-        "challenge": "Expensive leads on LinkedIn and poor MQL quality from forms. Needed pipeline growth at lower blended CAC.",
-        "solution": "ABM audience layers on LinkedIn with thought‑leadership + high‑intent Google Search. CRO tweaks and attribution clean‑up in GA4/GTM.",
-        "results": [
-          { "metric": "CAC", "value": "-32%", "description": "Blended across channels" }
-        ],
-        "testimonial": "Quality leads finally. The ABM + Search combo changed our pipeline overnight.",
-        "testimonialAuthor": "David Chen",
-        "testimonialRole": "CEO, Peak Performance",
-        "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop",
-        "stats": { "mainResult": "-32% CAC", "timeframe": "6 weeks", "seoFocus": "LinkedIn + Search" }
-      },
-      {
-        "id": 3,
-        "title": "Unlocking Incremental Lift with TikTok + Snapchat",
-        "company": "CloudFlow",
-        "industry": "SaaS",
-        "challenge": "Search was tapped out; needed incremental volume. Unsure how to measure lift across new social channels.",
-        "solution": "TikTok + Snapchat creatives with weekly iterations, event mapping, and platform/GA4 lift studies. Budget rules and holdout tests.",
-        "results": [
-          { "metric": "Lift", "value": "+22%", "description": "Incremental signups" }
-        ],
-        "testimonial": "We found real incremental volume instead of cannibalizing Search.",
-        "testimonialAuthor": "Marco Schneider",
-        "testimonialRole": "VP Marketing, CloudFlow",
-        "image": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop",
-        "stats": { "mainResult": "+22% Lift", "timeframe": "5 weeks", "seoFocus": "TikTok + Snapchat" }
-      }
-    ]
+    "items": []
   },
   
   "blog": {
@@ -235,29 +186,7 @@
     "caseStudyTitle": "3.4x ROAS Scaling Across Channels",
     "caseStudyDesc": "See how we combined PMAX + Meta creative testing to scale budget while improving CPA—validated in GA4.",
     "viewFull": "View Full Case Study",
-    "items": [
-      {
-        "name": "Emma Rodriguez",
-        "company": "Luxe Beauty Co.",
-        "role": "Founder",
-        "content": "We scaled Meta + Google without sacrificing ROAS. The weekly creative tests and budget guardrails made growth predictable.",
-        "rating": 5
-      },
-      {
-        "name": "David Chen",
-        "company": "Peak Performance",
-        "role": "CEO",
-        "content": "LinkedIn + Search finally drove qualified SQLs at a lower blended CAC. Reporting was clear and actionable.",
-        "rating": 5
-      },
-      {
-        "name": "Sophie Martens",
-        "company": "Urban Eats",
-        "role": "Marketing Lead",
-        "content": "TikTok + Snapchat added real incremental orders. Creative iterations each week kept CPA trending down.",
-        "rating": 5
-      }
-    ]
+    "items": []
   },
   "services": {
     "badge": "Ad Campaign Services",
@@ -385,36 +314,7 @@
       "title": "Full‑Funnel Ad Management",
       "description": "Strategy • Creatives • Launch • Optimization • Reporting • Budget Scaling"
     },
-    "items": [
-      {
-        "q": "Which ad platforms do you manage?",
-        "a": "Google (Search/PMAX/YouTube), Meta (Facebook/Instagram), TikTok, Snapchat, LinkedIn, and X (Twitter). We also set up pixels, GA4, and GTM."
-      },
-      {
-        "q": "How do you structure campaigns?",
-        "a": "We build channel‑specific structures: PMAX asset groups by theme, Search by intent, and Paid Social by creative angles. Weekly optimization with clear guardrails."
-      },
-      {
-        "q": "What about tracking and attribution?",
-        "a": "We implement GA4 events, platform pixels, and (optionally) server‑side GTM. We reconcile platform vs GA4 and provide Looker dashboards for ROAS/CAC."
-      },
-      {
-        "q": "How fast can we launch?",
-        "a": "Typical timeline: Audit (3–5 days), Tracking fixes (2–5 days), First launch (7–10 days). We iterate weekly from live data."
-      },
-      {
-        "q": "Do you create ad creatives?",
-        "a": "Yes. We produce UGC and polished variants tailored per platform and test hooks, angles, and formats to reduce CPA and improve ROAS."
-      },
-      {
-        "q": "How do you report performance?",
-        "a": "Weekly summaries with spend, CPA, ROAS, top creatives, learnings, and next actions. Monthly deep dives with attribution and budget recommendations."
-      },
-      {
-        "q": "What budgets do you work with?",
-        "a": "We work with a range—from early tests to $500k+/mo. We scale only when unit economics hold, with caps and kill rules to protect efficiency."
-      }
-    ]
+    "items": []
   }
   ,
   "why": {

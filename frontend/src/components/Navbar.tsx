@@ -54,6 +54,19 @@ export const Navbar = () => {
     );
   };
 
+  const scrollToSection = (href: string) => {
+    if (href.startsWith('#')) {
+      if (window.location.pathname !== '/') {
+        window.location.href = '/' + href;
+      } else {
+        const element = document.querySelector(href);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.location.href = href;
+    }
+  };
+
   const navItems = [
     { name: t("navbar.services"), href: "#services" },
     { name: t("navbar.howItWorks"), href: "#how-it-works" },
@@ -115,15 +128,19 @@ export const Navbar = () => {
           </motion.div>
 
           {/* Desktop Navigation - Show on medium screens and up */}
-          <div className="hidden md:flex items-center space-x-2 md:space-x-3 lg:space-x-6 xl:space-x-8">
+          <div className="hidden lg:flex items-center space-x-2 lg:space-x-4 xl:space-x-6">
             {navItems.map((item, index) => (
               <motion.a
                 key={item.name}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href);
+                }}
                 href={item.href}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                className="relative text-[hsl(222,47%,20%)] dark:text-foreground hover:text-[hsl(217,91%,60%)] dark:hover:text-gold transition-all duration-200 font-semibold text-sm md:text-sm lg:text-base px-2 md:px-2.5 lg:px-3 py-2 rounded-lg hover:bg-[hsl(210,40%,98%)] dark:hover:bg-gold/10 group whitespace-nowrap"
+                className="relative text-[hsl(222,47%,20%)] dark:text-foreground hover:text-[hsl(217,91%,60%)] dark:hover:text-gold transition-all duration-200 font-semibold text-sm md:text-sm lg:text-base px-2 md:px-2.5 lg:px-3 py-2 rounded-lg hover:bg-[hsl(210,40%,98%)] dark:hover:bg-gold/10 group whitespace-nowrap cursor-pointer"
               >
                 {item.name}
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-[hsl(217,91%,65%)] to-[hsl(220,90%,60%)] group-hover:w-3/4 transition-all duration-300" />
@@ -132,7 +149,7 @@ export const Navbar = () => {
           </div>
 
           {/* Desktop Actions - Show on medium screens and up */}
-          <div className="hidden md:flex items-center space-x-2 md:space-x-2.5 lg:space-x-3 xl:space-x-4">
+          <div className="hidden lg:flex items-center space-x-2 lg:space-x-3 xl:space-x-4">
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -200,7 +217,7 @@ export const Navbar = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="md:hidden flex items-center space-x-2"
+            className="lg:hidden flex items-center space-x-2"
           >
             <Button
               variant="ghost"
@@ -252,18 +269,22 @@ export const Navbar = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="md:hidden overflow-hidden bg-background/98 backdrop-blur-xl border-t border-border/50 shadow-lg"
+              className="lg:hidden overflow-hidden bg-background/98 backdrop-blur-xl border-t border-border/50 shadow-lg"
             >
               <div className="py-3 space-y-1">
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item.name}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(item.href);
+                      setIsOpen(false);
+                    }}
                     href={item.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.2, delay: index * 0.05 }}
-                    className="block text-foreground hover:text-[hsl(217,91%,65%)] hover:bg-[hsl(217,91%,65%)]/10 active:bg-[hsl(217,91%,65%)]/20 transition-all duration-200 font-medium py-3 px-4 rounded-lg mx-2"
-                    onClick={() => setIsOpen(false)}
+                    className="block text-foreground hover:text-[hsl(217,91%,65%)] hover:bg-[hsl(217,91%,65%)]/10 active:bg-[hsl(217,91%,65%)]/20 transition-all duration-200 font-medium py-3 px-4 rounded-lg mx-2 cursor-pointer"
                   >
                     {item.name}
                   </motion.a>

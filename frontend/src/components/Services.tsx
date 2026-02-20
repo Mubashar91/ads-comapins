@@ -1,15 +1,46 @@
-import { Palette, Layout, Package, Smartphone, Video, Sparkles } from "lucide-react";
+import { Palette, Layout, Package, Smartphone, Video, Sparkles, LucideIcon } from "lucide-react";
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-const iconMap = [Palette, Layout, Package, Smartphone, Video, Sparkles];
+// Icon mapping for different icon names
+const iconMap: Record<string, LucideIcon> = {
+  Palette,
+  Layout,
+  Package,
+  Smartphone,
+  Video,
+  Sparkles
+};
+
+interface Service {
+  order: number;
+  title: string;
+  description: string;
+  benefit: string;
+  icon: string;
+}
 
 export const Services = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-  const { t } = useTranslation();
-  const items = (t("services.items", { returnObjects: true }) as Array<{ title: string; description: string; benefit: string }>);
+  const { i18n, t } = useTranslation();
+
+  const services = [
+    { order: 0, title: 'Web Design', description: 'Beautiful, responsive websites', benefit: 'Boost Conversions', icon: 'Layout' },
+    { order: 1, title: 'Brand Identity', description: 'Memorable brand design', benefit: 'Stand Out', icon: 'Palette' },
+    { order: 2, title: 'UI/UX Design', description: 'Intuitive user interfaces', benefit: 'Better Experience', icon: 'Smartphone' },
+    { order: 3, title: 'Marketing Materials', description: 'Professional marketing designs', benefit: 'Professional Look', icon: 'Package' },
+    { order: 4, title: 'Video Editing', description: 'Engaging video content', benefit: 'Engage Audience', icon: 'Video' },
+    { order: 5, title: 'Custom Solutions', description: 'Tailored design solutions', benefit: 'Perfect Fit', icon: 'Sparkles' }
+  ];
+
+  const sectionData = {
+    badge: "Our Services",
+    headingPrefix: "What We",
+    headingEmphasis: "Offer",
+    intro: "Discover our comprehensive range of services designed to meet your needs."
+  };
 
   return (
     <motion.section 
@@ -38,23 +69,23 @@ export const Services = () => {
         >
           <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2.5 bg-gradient-to-br from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] text-white text-xs sm:text-sm md:text-base font-semibold rounded-full mb-3 sm:mb-4 shadow-[0_8px_24px_-6px_rgba(59,130,246,0.4)] border border-white/20 backdrop-blur-sm relative overflow-hidden">
             <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-50"></span>
-            <span className="relative z-10">{t("services.badge")}</span>
+            <span className="relative z-10">{sectionData.badge}</span>
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 text-[hsl(222,47%,20%)] dark:text-white leading-tight tracking-tight">
-            {t("services.headingPrefix")} <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] bg-clip-text text-transparent bg-[length:200%_100%]">{t("services.headingEmphasis")}</span>
+            {sectionData.headingPrefix} <span className="relative inline-block">
+              <span className="bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] bg-clip-text text-transparent bg-[length:200%_100%]">{sectionData.headingEmphasis}</span>
               <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[hsl(var(--gold))]/40 to-transparent"></span>
             </span>
           </h2>
           <p className="text-base sm:text-lg md:text-lg lg:text-xl text-muted-foreground max-w-3xl leading-relaxed px-2">
-            {t("services.intro")}
+            {sectionData.intro}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-7 lg:gap-8 max-w-7xl mx-auto relative z-10">
-          {items.map((service, index) => (
+          {services.map((service, index) => (
             <motion.div 
-              key={index}
+              key={service.order}
               className="relative bg-card text-[hsl(222,47%,20%)] dark:text-white border-2 border-[hsl(215,32%,91%)] dark:border-[hsl(250,30%,35%)]/50 p-5 sm:p-6 md:p-7 lg:p-9 xl:p-10 rounded-xl sm:rounded-2xl hover:border-[hsl(var(--gold))] dark:hover:border-[hsl(var(--gold))] hover:shadow-[0_25px_80px_-20px_hsl(217_91%_60%/0.25)] dark:hover:shadow-[0_25px_80px_-20px_rgba(0,0,0,0.4)] transition-all duration-700 group overflow-hidden"
               initial={{ opacity: 0, y: 60, scale: 0.9 }}
               animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 60, scale: 0.9 }}
@@ -87,7 +118,7 @@ export const Services = () => {
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
-                  {iconMap[index] ? (() => { const Icon = iconMap[index % iconMap.length]!; return <Icon className="w-7 h-7 sm:w-8 sm:h-8 md:w-7 md:h-7 lg:w-8 lg:h-8" />; })() : null}
+                  {service.icon && iconMap[service.icon] ? (() => { const Icon = iconMap[service.icon]; return <Icon className="w-7 h-7 sm:w-8 sm:h-8 md:w-7 md:h-7 lg:w-8 lg:h-8" />; })() : null}
                 </motion.div>
                 
                 <div className="flex-1 w-full">

@@ -1,39 +1,68 @@
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { ArrowRight, Calendar, Sparkles, Palette, Layers, Award } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+interface HeroData {
+  title: string;
+  subtitle: string;
+  tagline: string;
+  image: string;
+  ctaPrimary: string;
+  urgency: string;
+  stats: {
+    clients: string;
+    costSaved: string;
+    rating: string;
+  };
+}
+
 export const Hero = () => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement>(null);
+  const [isMounted, setIsMounted] = useState(false);
+  const { i18n } = useTranslation();
   const isInView = useInView(ref, { once: true, amount: 0.3 });
-  const { t } = useTranslation();
   
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"]
-  });
-  
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0]);
-  const springY = useSpring(y, { stiffness: 100, damping: 30 });
+  const heroData: HeroData = i18n.language === 'de' ? {
+    title: "Hochkonvertierende Werbekampagnen mit messbaren Ergebnissen",
+    subtitle: "Maximieren Sie Ihren ROI mit unseren datengesteuerten Werbestrategien. Wir erstellen und verwalten Facebook-, Google- und Instagram-Anzeigen, die Besucher in Kunden verwandeln und Ihr Unternehmen skalieren.",
+    tagline: "✨ Performance Marketing Experten",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+    ctaPrimary: "Kostenlose Anzeigen-Analyse",
+    urgency: "Begrenzte Plätze für kostenlose Analyse",
+    stats: {
+      clients: "300+ Kampagnen",
+      costSaved: "4,2x ROAS",
+      rating: "95% Erfolgsquote"
+    }
+  } : {
+    title: "High-Converting Ad Campaigns That Drive Results",
+    subtitle: "Maximize your ROI with our data-driven advertising strategies. We create and manage Facebook, Google, and Instagram ads that convert visitors into customers and scale your business.",
+    tagline: "✨ Performance Marketing Experts",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+    ctaPrimary: "Get Free Ad Audit",
+    urgency: "Free audit spots filling fast",
+    stats: {
+      clients: "300+ Campaigns",
+      costSaved: "4.2x ROAS",
+      rating: "95% Success Rate"
+    }
+  };
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <motion.section 
       ref={ref}
       className="relative min-h-screen flex items-center bg-background text-foreground overflow-hidden pt-16 sm:pt-20 md:pt-0"
-      style={{ opacity }}
     >
       {/* Animated background with futuristic grid */}
       <motion.div 
         className="absolute inset-0 bg-gradient-to-br from-background via-background to-[hsl(var(--brand-blue)/0.08)] z-0"
-        style={{ y }}
       />
-      {/* Animated grid + particles overlay */}
-      <div className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-20 z-0">
-        <div className="absolute inset-0 animated-grid" />
-        <div className="absolute inset-0 particle-helper" />
-      </div>
       
       {/* Futuristic floating orbs */}
       <motion.div
@@ -62,8 +91,8 @@ export const Hero = () => {
         }}
       />
       
-      <div className="w-full max-w-none mx-auto px-0 py-8 sm:py-12 md:py-16 lg:py-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-20 xl:gap-24 items-start">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-4 py-8 sm:py-12 md:py-16 lg:py-20 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
@@ -74,7 +103,6 @@ export const Hero = () => {
               type: "spring",
               stiffness: 100
             }}
-            className="relative z-10 lg:pr-10 xl:pr-16"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -99,19 +127,16 @@ export const Hero = () => {
                 }}
                 className="text-white"
               >
-                {t("hero.badge")}
+                {heroData.tagline}
               </motion.span>
             </motion.div>
             
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-extrabold mb-4 sm:mb-5 md:mb-6 leading-[1.15] sm:leading-[1.12] md:leading-[1.1] tracking-tight text-[hsl(222,47%,12%)] dark:text-white max-w-[560px] xl:max-w-[520px]">
-              {t("hero.headingPrefix")} <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] bg-clip-text text-transparent bg-[length:200%_100%] animate-[gradient-shift_3s_ease_infinite]">{t("hero.headingEmphasis")}</span>
-                <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[hsl(var(--gold))]/0 via-[hsl(var(--gold))]/50 to-[hsl(var(--gold))]/0"></span>
-              </span>
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-extrabold mb-4 sm:mb-5 md:mb-6 leading-[1.15] sm:leading-[1.12] md:leading-[1.1] tracking-tight text-black dark:text-white">
+              {heroData.title}
             </h1>
             
-            <p className="text-base sm:text-lg md:text-xl lg:text-xl text-muted-foreground mb-6 sm:mb-7 md:mb-8 leading-relaxed max-w-xl font-normal">
-              {t("hero.subtitle")}
+            <p className="text-base sm:text-lg md:text-xl lg:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-7 md:mb-8 leading-relaxed max-w-xl font-normal">
+              {heroData.subtitle}
             </p>
             
             <motion.div
@@ -123,8 +148,8 @@ export const Hero = () => {
               <Button 
                 size="lg"
                 onClick={() => window.location.href = '/book-meeting'}
-                className="group relative w-full sm:w-auto text-sm sm:text-base md:text-lg px-8 sm:px-10 md:px-12 py-5 sm:py-6 md:py-7 h-auto font-bold bg-gradient-to-br from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] text-white hover:opacity-95 transform hover:scale-[1.06] hover:-translate-y-2 transition-all duration-400 cursor-pointer overflow-hidden rounded-xl border-2 border-transparent hover:border-[hsl(var(--gold))]/30 shadow-[0_20px_60px_-15px_hsl(188_80%_40%/0.35),0_0_40px_hsl(217_91%_60%/0.2)] hover:shadow-[0_25px_70px_-15px_hsl(188_80%_40%_/_0.5),0_0_60px_hsl(217_91%_60%/0.4)] btn-glow"
-                aria-label={t("hero.ctaAria")}
+                className="group relative w-full sm:w-auto text-sm sm:text-base md:text-lg px-8 sm:px-10 md:px-12 py-5 sm:py-6 md:py-7 h-auto font-bold bg-gradient-to-br from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] text-white hover:opacity-95 transform hover:scale-[1.06] hover:-translate-y-2 transition-all duration-400 cursor-pointer overflow-hidden rounded-xl border-2 border-transparent hover:border-[hsl(var(--gold))]/30 shadow-[0_20px_60px_-15px_hsl(188_80%_40%/0.35),0_0_40px_hsl(217_91%_60%/0.2)] hover:shadow-[0_25px_70px_-15px_hsl(188_80%_40%/0.5),0_0_60px_hsl(217_91%_60%/0.4)]"
+                aria-label="Book a free 30-minute design consultation"
               >
                 {/* Subtle shimmer effect */}
                 <motion.div
@@ -147,8 +172,8 @@ export const Hero = () => {
                 
                 <span className="relative z-10 flex items-center justify-center gap-2.5">
                   <Calendar className="w-5 h-5 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" aria-hidden="true" />
-                  <span className="hidden sm:inline font-semibold group-hover:tracking-wide transition-all duration-300">{t("hero.ctaPrimaryDesktop")}</span>
-                  <span className="sm:hidden font-semibold group-hover:tracking-wide transition-all duration-300">{t("hero.ctaPrimaryMobile")}</span>
+                  <span className="hidden sm:inline font-semibold group-hover:tracking-wide transition-all duration-300">{heroData.ctaPrimary}</span>
+                  <span className="sm:hidden font-semibold group-hover:tracking-wide transition-all duration-300">{heroData.ctaPrimary}</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-2 group-hover:scale-110 transition-all duration-300" aria-hidden="true" />
                 </span>
               </Button>
@@ -158,7 +183,7 @@ export const Hero = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
-                className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm text-muted-foreground"
+                className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400"
               >
                 <motion.div
                   animate={{
@@ -173,13 +198,13 @@ export const Hero = () => {
                 >
                   <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-gold" aria-hidden="true" />
                 </motion.div>
-                <span className="font-medium">{t("hero.urgency")}</span>
+                <span className="font-medium">{heroData.urgency}</span>
               </motion.div>
             </motion.div>
           </motion.div>
           
           <motion.div
-            className="relative z-30 lg:ml-12 xl:ml-20 lg:max-w-[520px] xl:max-w-[600px] mt-8 sm:mt-10 lg:mt-0"
+            className="relative lg:ml-auto mt-8 sm:mt-10 lg:mt-0"
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4, ease: [0.6, -0.05, 0.01, 0.99] }}
@@ -206,7 +231,7 @@ export const Hero = () => {
               >
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-50"></div>
                 <Award className="w-3 h-3 sm:w-4 sm:h-4 relative z-10" aria-hidden="true" />
-                <span className="text-[10px] sm:text-xs font-bold whitespace-nowrap relative z-10">{t("hero.topRated")}</span>
+                <span className="text-[10px] sm:text-xs font-bold whitespace-nowrap relative z-10">Top Rated</span>
               </motion.div>
             </motion.div>
             
@@ -220,8 +245,8 @@ export const Hero = () => {
             >
               {/* Layer 1: image */}
               <motion.img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
-                alt={t("hero.imgAlt")}
+                src={heroData.image}
+                alt="Hero section visual"
                 className="w-full h-auto object-cover"
                 style={{ transform: "translateZ(20px)" }}
               />
@@ -267,8 +292,8 @@ export const Hero = () => {
                       transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                     >
                       <Palette className="w-4 h-4 sm:w-5 sm:h-5 mx-auto mb-1 text-[hsl(217,91%,75%)] transition-colors" aria-hidden="true" />
-                      <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white">500+</div>
-                      <div className="text-[9px] sm:text-[10px] md:text-xs text-[hsl(217,91%,85%)] font-medium">{t("hero.statProjects")}</div>
+                      <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white">{heroData.stats.clients}</div>
+                      <div className="text-[9px] sm:text-[10px] md:text-xs text-[hsl(217,91%,85%)] font-medium">Clients Served</div>
                     </motion.div>
                   </motion.div>
                   
@@ -284,8 +309,8 @@ export const Hero = () => {
                       transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
                     >
                       <Layers className="w-4 h-4 sm:w-5 sm:h-5 mx-auto mb-1 text-[hsl(217,91%,75%)] transition-colors" aria-hidden="true" />
-                      <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white">3–7</div>
-                      <div className="text-[9px] sm:text-[10px] md:text-xs text-[hsl(217,91%,85%)] font-medium">{t("hero.statTurnaround")}</div>
+                      <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white">{heroData.stats.costSaved}</div>
+                      <div className="text-[9px] sm:text-[10px] md:text-xs text-[hsl(217,91%,85%)] font-medium">Avg Timeline</div>
                     </motion.div>
                   </motion.div>
                   
@@ -301,8 +326,8 @@ export const Hero = () => {
                       transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
                     >
                       <Award className="w-4 h-4 sm:w-5 sm:h-5 mx-auto mb-1 text-[hsl(217,91%,75%)] transition-colors" aria-hidden="true" />
-                      <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white">98%</div>
-                      <div className="text-[9px] sm:text-[10px] md:text-xs text-[hsl(217,91%,85%)] font-medium">{t("hero.statSatisfaction")}</div>
+                      <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white">{heroData.stats.rating}</div>
+                      <div className="text-[9px] sm:text-[10px] md:text-xs text-[hsl(217,91%,85%)] font-medium">Success Rate</div>
                     </motion.div>
                   </motion.div>
                 </div>

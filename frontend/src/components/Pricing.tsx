@@ -1,15 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Check, Star, Gift } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-// Constants
-const MAX_VA_COUNT = 10;
-const BULK_DISCOUNT_THRESHOLD = 3;
-const BULK_DISCOUNT_RATE = 0.03;
-
-// TypeScript Interface
 interface PricingPlan {
   name: string;
   hours: string;
@@ -18,24 +12,36 @@ interface PricingPlan {
   features: string[];
   highlighted: boolean;
   badge?: string;
+  order: number;
 }
 
 export const Pricing = () => {
-  const [vaCount, setVaCount] = useState(1);
-  const { t } = useTranslation();
-  const plans = (t("pricing.plans", { returnObjects: true }) as PricingPlan[]);
+  const { t, i18n } = useTranslation();
+  const [plans, setPlans] = useState<PricingPlan[]>([]);
 
-  const calculateDiscount = (count: number) => {
-    return count >= BULK_DISCOUNT_THRESHOLD ? BULK_DISCOUNT_RATE : 0;
-  };
-
-  const discount = calculateDiscount(vaCount);
-  const totalPrice = plans.reduce((sum, plan) => sum + plan.price, 0) * vaCount;
-  const savings = discount > 0 ? Math.round(totalPrice * discount) : 0;
-
-  // Calculate average price per VA per hour
-  const avgHoursPerWeek = 20; // Professional plan baseline
-  const avgPricePerVA = plans[1].price; // Professional plan price
+  useEffect(() => {
+    const fetchPricing = async () => {
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
+        const database = import.meta.env.VITE_DATABASE || 'callcenter';
+        const url = `${apiBase}/api/pricing?lang=${i18n.language}`;
+        
+        const response = await fetch(url, {
+          headers: { 'X-Tenant-ID': database }
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          if (data.plans && data.plans.length > 0) {
+            setPlans(data.plans);
+          }
+        }
+      } catch (error) {
+        console.error('Failed to fetch pricing:', error);
+      }
+    };
+    fetchPricing();
+  }, [i18n.language]);
 
   return (
     <motion.section 
@@ -251,7 +257,7 @@ export const Pricing = () => {
                   size="lg"
                   onClick={() => window.location.href = '/book-meeting'}
                   className="w-full relative z-10 font-bold text-base py-6 sm:py-7 rounded-xl transition-all duration-300 group/btn overflow-hidden min-h-[44px] bg-gradient-to-br from-[hsl(var(--gold))] via-[hsl(var(--brand-blue))] to-[hsl(var(--gold))] text-white hover:opacity-95 hover:scale-105 border-0"
-                  aria-label={`Get started with ${plan.name} plan - ${plan.hours} at ${Math.round(plan.price * (1 - discount) * vaCount)} per month`}
+                  aria-label={`Get started with ${plan.name} plan`}
                 >
                   {/* Button shine effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-700" aria-hidden="true" />

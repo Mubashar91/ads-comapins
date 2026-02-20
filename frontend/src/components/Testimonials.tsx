@@ -1,13 +1,83 @@
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 type TestimonialItem = { name: string; company: string; role: string; content: string; rating: number };
+type FeaturedCaseStudy = {
+  caseStudyId: number;
+  title: string;
+  challenge: string;
+  stats?: { mainResult?: string };
+};
 
 export const Testimonials = () => {
-  const { t } = useTranslation();
-  const testimonials = (t("testimonials.items", { returnObjects: true }) as TestimonialItem[]) || [];
+  const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+  const [testimonials, setTestimonials] = useState<TestimonialItem[]>([]);
+  const [featuredCaseStudy, setFeaturedCaseStudy] = useState<FeaturedCaseStudy | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const apiBase = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
+    const database = import.meta.env.VITE_DATABASE || 'callcenter';
+
+    const fetchTestimonials = async () => {
+      try {
+        const url = `${apiBase}/api/testimonials?lang=${i18n.language}`;
+        const response = await fetch(url, {
+          headers: {
+            'X-Tenant-ID': database
+          }
+        });
+
+        if (!response.ok) {
+          console.error('Failed to fetch testimonials data - Status:', response.status);
+          if (!cancelled) setTestimonials([]);
+          return;
+        }
+
+        const data = await response.json();
+        if (!cancelled) setTestimonials(data.testimonials || []);
+      } catch (error) {
+        console.error('Failed to fetch testimonials data:', error);
+        if (!cancelled) setTestimonials([]);
+      }
+    };
+
+    const fetchFeaturedCaseStudy = async () => {
+      try {
+        const url = `${apiBase}/api/case-studies?lang=${i18n.language}`;
+        const response = await fetch(url, {
+          headers: {
+            'X-Tenant-ID': database
+          }
+        });
+
+        if (!response.ok) {
+          if (!cancelled) setFeaturedCaseStudy(null);
+          return;
+        }
+
+        const data = await response.json();
+        const first = (data.caseStudies || [])[0];
+        if (!cancelled) setFeaturedCaseStudy(first || null);
+      } catch (_error) {
+        if (!cancelled) setFeaturedCaseStudy(null);
+      }
+    };
+
+    fetchTestimonials();
+    fetchFeaturedCaseStudy();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [i18n.language]);
+
   return (
     <motion.section 
       id="testimonials"
@@ -88,28 +158,34 @@ export const Testimonials = () => {
           ))}
         </div>
 
-        <motion.div 
-          className="relative bg-gradient-to-br from-card/80 to-card/60 backdrop-blur-xl border border-[hsl(215,32%,91%)] dark:border-border/40 rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 max-w-5xl mx-auto hover:border-[hsl(var(--gold))]/70 dark:hover:border-[hsl(var(--gold))]/70 hover:shadow-[0_25px_70px_-15px_hsl(217_91%_60%/0.35),0_0_40px_hsl(217_91%_60%/0.15)] dark:hover:shadow-[0_25px_70px_-15px_rgba(59,130,246,0.3),0_0_40px_rgba(59,130,246,0.1)] transition-all duration-300 overflow-hidden group"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-        >
-          <div className="text-left">
-            <span className="inline-block px-3 py-1 bg-card dark:bg-[hsl(250,45%,20%)]/50 text-[hsl(var(--gold))] dark:text-[hsl(var(--gold))] text-xs sm:text-sm font-semibold rounded-full mb-3 sm:mb-4">
-              {t("testimonials.successStory")}
-            </span>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-[hsl(250,50%,20%)] dark:text-white">
-              {t("testimonials.caseStudyPrefix")} <span className="bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] bg-clip-text text-transparent">{t("testimonials.caseStudyTitle")}</span>
-            </h3>
-            <p className="text-sm sm:text-base md:text-lg text-[hsl(220,30%,50%)] dark:text-white mb-5 sm:mb-6 leading-relaxed max-w-3xl">
-              {t("testimonials.caseStudyDesc")}
-            </p>
-            <Button size="lg" className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] text-white hover:opacity-95 transition-all duration-300 hover:scale-105 font-semibold border-0">
-              {t("testimonials.viewFull")}
-            </Button>
-          </div>
-        </motion.div>
+        {featuredCaseStudy?.caseStudyId ? (
+          <motion.div 
+            className="relative bg-gradient-to-br from-card/80 to-card/60 backdrop-blur-xl border border-[hsl(215,32%,91%)] dark:border-border/40 rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 max-w-5xl mx-auto hover:border-[hsl(var(--gold))]/70 dark:hover:border-[hsl(var(--gold))]/70 hover:shadow-[0_25px_70px_-15px_hsl(217_91%_60%/0.35),0_0_40px_hsl(217_91%_60%/0.15)] dark:hover:shadow-[0_25px_70px_-15px_rgba(59,130,246,0.3),0_0_40px_rgba(59,130,246,0.1)] transition-all duration-300 overflow-hidden group"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+          >
+            <div className="text-left">
+              <span className="inline-block px-3 py-1 bg-card dark:bg-[hsl(250,45%,20%)]/50 text-[hsl(var(--gold))] dark:text-[hsl(var(--gold))] text-xs sm:text-sm font-semibold rounded-full mb-3 sm:mb-4">
+                {t("testimonials.successStory")}
+              </span>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-[hsl(250,50%,20%)] dark:text-white">
+                {t("testimonials.caseStudyPrefix")} <span className="bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] bg-clip-text text-transparent">{featuredCaseStudy.stats?.mainResult || featuredCaseStudy.title}</span>
+              </h3>
+              <p className="text-sm sm:text-base md:text-lg text-[hsl(220,30%,50%)] dark:text-white mb-5 sm:mb-6 leading-relaxed max-w-3xl">
+                {featuredCaseStudy.challenge}
+              </p>
+              <Button
+                size="lg"
+                className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--brand-blue))] text-white hover:opacity-95 transition-all duration-300 hover:scale-105 font-semibold border-0"
+                onClick={() => navigate(`/case-study/${featuredCaseStudy.caseStudyId}`)}
+              >
+                {t("testimonials.viewFull")}
+              </Button>
+            </div>
+          </motion.div>
+        ) : null}
       </div>
     </motion.section>
   );

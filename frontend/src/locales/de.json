@@ -310,36 +310,7 @@
     "viewPricing": "Preise ansehen",
     "ctaTitle": "Noch Fragen?",
     "ctaSubtitle": "Unser Team hilft gerne. Wir melden uns innerhalb von 2 Stunden.",
-    "items": [
-      {
-        "q": "Welche Werbeplattformen betreut ihr?",
-        "a": "Google (Search/PMAX/YouTube), Meta (Facebook/Instagram), TikTok, Snapchat, LinkedIn und X (Twitter). Wir richten außerdem Pixel, GA4 und GTM ein."
-      },
-      {
-        "q": "Wie strukturiert ihr Kampagnen?",
-        "a": "Plattform-spezifische Setups: PMAX-Asset-Gruppen nach Themen, Search nach Intent und Paid Social nach Kreativ-Angles. Wöchentliche Optimierung mit klaren Leitplanken."
-      },
-      {
-        "q": "Wie funktioniert Tracking und Attribution?",
-        "a": "Wir implementieren GA4-Events, Plattform-Pixel und optional serverseitiges GTM. Wir gleichen Plattform vs. GA4 ab und liefern Looker-Dashboards für ROAS/CAC."
-      },
-      {
-        "q": "Wie schnell könnt ihr starten?",
-        "a": "Typische Timeline: Audit (3–5 Tage), Tracking-Fixes (2–5 Tage), erster Launch (7–10 Tage). Wöchentliche Iteration auf Live-Daten."
-      },
-      {
-        "q": "Erstellt ihr auch Creatives?",
-        "a": "Ja. Wir produzieren UGC und ausgearbeitete Varianten je Plattform und testen Hooks, Angles und Formate, um CPA zu senken und ROAS zu steigern."
-      },
-      {
-        "q": "Wie reportet ihr Performance?",
-        "a": "Wöchentliche Zusammenfassungen mit Spend, CPA, ROAS, Top-Creatives, Learnings und nächsten Schritten. Monatliche Deep Dives mit Attribution und Budgetempfehlungen."
-      },
-      {
-        "q": "Mit welchen Budgets arbeitet ihr?",
-        "a": "Von ersten Tests bis 500k+ $/Monat. Wir skalieren nur, wenn die Unit Economics passen – mit Caps und Kill-Rules zur Effizienzsicherung."
-      }
-    ]
+    "items": []
   }
   ,
   "blog": {
@@ -382,29 +353,7 @@
     "caseStudyTitle": "3,4x ROAS über mehrere Kanäle",
     "caseStudyDesc": "Wie wir PMAX + Meta-Kreativtests kombinierten, um Budgets zu skalieren und gleichzeitig den CPA zu verbessern – validiert in GA4.",
     "viewFull": "Komplette Fallstudie ansehen",
-    "items": [
-      {
-        "name": "Emma Rodriguez",
-        "company": "Luxe Beauty Co.",
-        "role": "Gründerin",
-        "content": "Wir skalierten Meta + Google, ohne den ROAS zu opfern. Wöchentliche Kreativtests und Budget‑Leitplanken machten das Wachstum planbar.",
-        "rating": 5
-      },
-      {
-        "name": "David Chen",
-        "company": "Peak Performance",
-        "role": "CEO",
-        "content": "LinkedIn + Search lieferten endlich qualifizierte SQLs bei niedrigerem gemischten CAC. Das Reporting war klar und umsetzbar.",
-        "rating": 5
-      },
-      {
-        "name": "Sophie Martens",
-        "company": "Urban Eats",
-        "role": "Marketing-Leitung",
-        "content": "TikTok + Snapchat brachten echte zusätzliche Bestellungen. Wöchentliche kreative Iterationen hielten den CPA im Sinkflug.",
-        "rating": 5
-      }
-    ]
+    "items": []
   }
   ,
   "caseStudiesList": {
@@ -418,55 +367,6 @@
     "ctaPrompt": "Bereit für Ihre eigene Erfolgsgeschichte?",
     "ctaPrimaryDesktop": "Kostenlose Erstberatung buchen →",
     "ctaPrimaryMobile": "Jetzt starten →",
-    "items": [
-      {
-        "id": 1,
-        "title": "DTC Skalierung mit PMAX + UGC auf Meta",
-        "company": "Luxe Beauty Co.",
-        "industry": "DTC Beauty",
-        "challenge": "Steigende CPAs auf Meta und stagnierende Google‑Search. Benötigt: frische Creatives und mehr Reichweite ohne ROAS zu zerstören.",
-        "solution": "UGC‑Kreativtests auf Meta (Hooks/Angles) + PMAX‑Asset‑Groups nach Themen. Wöchentliche Optimierung mit Budget‑Leitplanken und GA4‑Validierung.",
-        "results": [
-          { "metric": "ROAS", "value": "3,4x", "description": "Über Meta/Google gemittelt" }
-        ],
-        "testimonial": "Der wöchentliche Rhythmus und die Kreativtests ermöglichten Skalierung ohne ROAS‑Verlust.",
-        "testimonialAuthor": "Emma Rodriguez",
-        "testimonialRole": "Gründerin, Luxe Beauty Co.",
-        "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop",
-        "stats": { "mainResult": "3,4x ROAS", "timeframe": "8 Wochen", "seoFocus": "Meta + PMAX" }
-      },
-      {
-        "id": 2,
-        "title": "B2B Pipeline: LinkedIn + Search Capture",
-        "company": "Peak Performance",
-        "industry": "B2B Services",
-        "challenge": "Teure Leads auf LinkedIn und schwache MQL‑Qualität aus Formularen. Ziel: Pipeline‑Wachstum bei niedrigerem blended CAC.",
-        "solution": "ABM‑Audiences auf LinkedIn mit Thought‑Leadership + High‑Intent‑Google‑Search. CRO‑Tweaks und Attributions‑Cleanup in GA4/GTM.",
-        "results": [
-          { "metric": "CAC", "value": "-32%", "description": "Über Kanäle gemittelt" }
-        ],
-        "testimonial": "Endlich qualifizierte Leads. Die ABM + Search‑Kombi hat unsere Pipeline über Nacht verändert.",
-        "testimonialAuthor": "David Chen",
-        "testimonialRole": "CEO, Peak Performance",
-        "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop",
-        "stats": { "mainResult": "-32% CAC", "timeframe": "6 Wochen", "seoFocus": "LinkedIn + Search" }
-      },
-      {
-        "id": 3,
-        "title": "Inkrementellen Lift mit TikTok + Snapchat erschließen",
-        "company": "CloudFlow",
-        "industry": "SaaS",
-        "challenge": "Search war ausgereizt; zusätzlicher Volumenbedarf. Unsicherheit bei der Lift‑Messung über neue Social‑Kanäle.",
-        "solution": "TikTok + Snapchat Creatives mit wöchentlichen Iterationen, Event‑Mapping und Lift‑Studien (Plattform/GA4). Budgetregeln und Holdout‑Tests.",
-        "results": [
-          { "metric": "Lift", "value": "+22%", "description": "Inkrementale Sign‑ups" }
-        ],
-        "testimonial": "Wir fanden echte zusätzliche Reichweite statt Search‑Kannibalisierung.",
-        "testimonialAuthor": "Marco Schneider",
-        "testimonialRole": "VP Marketing, CloudFlow",
-        "image": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop",
-        "stats": { "mainResult": "+22% Lift", "timeframe": "5 Wochen", "seoFocus": "TikTok + Snapchat" }
-      }
-    ]
+    "items": []
   }
 }
