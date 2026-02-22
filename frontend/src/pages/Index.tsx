@@ -11,13 +11,43 @@ import { FAQ } from "@/components/FAQ";
 import { CaseStudies } from "@/components/CaseStudies";
 import { Blog } from "@/components/Blog";
 import { FinalCTA } from "@/components/FinalCTA";
+import SEOHead from "@/components/SEOHead";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { motion } from "framer-motion";
 
 const Index = () => {
   return (
-    <main className="min-h-screen overflow-x-hidden">
-      <Navbar />
-      <Hero />
+    <>
+      <SEOHead 
+        canonicalUrl="/"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Omnichannel Ad Campaign Management | Don-Ad",
+          "description": "Plan, launch, and scale paid ads across Google, Meta, TikTok, Snapchat, LinkedIn, and X. Full‑funnel strategy, creative, tracking, A/B testing, and performance reporting.",
+          "url": "https://don-ad.com/",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "Don-Ad",
+            "url": "https://don-ad.com",
+            "logo": "https://don-ad.com/placeholder.svg"
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://don-ad.com/"
+              }
+            ]
+          }
+        }}
+      />
+      <main className="min-h-screen overflow-x-hidden">
+        <Navbar />
+        <Hero />
       <motion.div
         initial="hidden"
         whileInView="show"
@@ -83,6 +113,7 @@ const Index = () => {
         </motion.div>
       </motion.div>
     </main>
+    </>
   );
 };
 
